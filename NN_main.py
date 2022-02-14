@@ -43,7 +43,7 @@ print("------------------------------------------------------------")
 #####################################################################################################################
 Whole_ETF_3x = None
 
-ETFpath = '3x-ETF/'  # Reference '3x-ETF-All-Files/' to run over all 3x ETF's
+ETFpath = '3x-ETF-All-Files/'  # Reference '3x-ETF-All-Files/' to run over all 3x ETF's
 
 # Run over each ETF desired
 ETFfiles = glob.glob(os.path.join(ETFpath, "*.csv"))
@@ -298,48 +298,70 @@ for ETF_csvs in ETFfiles:
 
 #####################################################################################################################
 
-    Quantpath = 'Algorithm_Backtests_All_3xETFs/datasets/'
-
-    Quantfile = name
-
-    Quant_rawdata = None
-
-    # Note, for now, columns are off by one, so "Date" here equates to the column of "Value"
-
+    # Quantpath = 'Algorithm_Backtests_All_3xETFs/datasets/'
+    #
+    # Quantfile = name
+    #
+    # Quant_rawdata = None
+    #
+    # # Note, for now, columns are off by one, so "Date" here equates to the column of "Value"
+    #
     skip_flag = 0
-    try:
-        Quant_rawdata = pd.read_csv(Quantpath + Quantfile)
-    except:
-        print("ALERT: Profit Data not Formatted in the Same Way as Rest of Profit Data, Please Check")
-        print("This ETF will be Ignored and Removed from Dataset")
-        print("------------------------------------------------------------")
-        skip_flag = 1
+    # try:
+    #     Quant_rawdata = pd.read_csv(Quantpath + Quantfile)
+    # except:
+    #     print("ALERT: Profit Data not Formatted in the Same Way as Rest of Profit Data, Please Check")
+    #     print("This ETF will be Ignored and Removed from Dataset")
+    #     print("------------------------------------------------------------")
+    #     skip_flag = 1
+    #
+    # if skip_flag == 0:
+    #     Quant_dates = Quant_rawdata.index
+    #     ETF_3x['Profit Percentage'] = np.nan
+    #
+    #     start = 100000  # Assuming starting money amount is $100,000, should be entered by user
+    #
+    #     for days in range(len(ETF_3x)):
+    #         flag = 0
+    #         temp = 0
+    #         for dates in Quant_dates:
+    #             if ETF_3x['Date'][days] in dates:
+    #                 temp += float(Quant_rawdata['Status'][dates])
+    #
+    #         if temp == 0:
+    #             temp_profit = np.nan
+    #         else:
+    #             temp_profit = temp / start * 100
+    #             start += temp
+    #
+    #         ETF_3x.iloc[days, ETF_3x.columns.get_loc('Profit Percentage')] = temp_profit
+    #
+    #     print(name + " Profit Percentage by Trading Algorithm Compiled and Appended to Dataframe")
+    #     print("------------------------------------------------------------")
+    # else:
+    #     ETF_3x['Profit Percentage'] = np.nan
 
-    if skip_flag == 0:
-        Quant_dates = Quant_rawdata.index
-        ETF_3x['Profit Percentage'] = np.nan
+#####################################################################################################################
 
-        start = 100000  # Assuming starting money amount is $100,000, should be entered by user
+    # Calculate Future Difference in Closing Price
 
-        for days in range(len(ETF_3x)):
-            flag = 0
-            temp = 0
-            for dates in Quant_dates:
-                if ETF_3x['Date'][days] in dates:
-                    temp += float(Quant_rawdata['Status'][dates])
+#####################################################################################################################
 
-            if temp == 0:
-                temp_profit = np.nan
-            else:
-                temp_profit = temp / start * 100
-                start += temp
+    future_num_days = 15  # starting value, can be changed to any number
 
-            ETF_3x.iloc[days, ETF_3x.columns.get_loc('Profit Percentage')] = temp_profit
 
-        print(name + " Profit Percentage by Trading Algorithm Compiled and Appended to Dataframe")
-        print("------------------------------------------------------------")
-    else:
-        ETF_3x['Profit Percentage'] = np.nan
+    ETF_3x['Closing Price Difference ' + str(future_num_days) + ' days from now'] = np.nan
+
+    for days in range(len(ETF_3x) - (future_num_days + 1)):
+        ETF_3x.iloc[days, ETF_3x.columns.get_loc('Closing Price Difference ' + str(future_num_days) + ' days from now')] = 0
+        for n in range(future_num_days):
+                ETF_3x.iloc[days, ETF_3x.columns.get_loc('Closing Price Difference ' + str(future_num_days) + ' days from now')] += \
+                    ETF_3x.iloc[days + n + 1, ETF_3x.columns.get_loc('Close')]
+
+    print(name + " " + str(future_num_days) + "-day Delta in Close Price Compiled and Appended to Dataframe")
+    print("------------------------------------------------------------")
+
+#####################################################################################################################
 
 #####################################################################################################################
 
@@ -597,8 +619,8 @@ Test_X = Whole_ETF_3x.drop(Train_X.index)
 train_features = Train_X.copy()
 test_features = Test_X.copy()
 
-train_labels = train_features.pop('Profit Percentage')
-test_labels = test_features.pop('Profit Percentage')
+train_labels = train_features.pop('Closing Price Difference ' + str(future_num_days) + ' days from now')
+test_labels = test_features.pop('Closing Price Difference ' + str(future_num_days) + ' days from now')
 
 train_features = np.asarray(train_features).astype(float)
 test_features = np.asarray(test_features).astype(float)
@@ -622,7 +644,7 @@ print("------------------------------------------------------------")
 
 # Input the number of Neural Networks to Ensemble together, initialize Test Model
 
-models_to_test = 5
+models_to_test = 3
 test_model = None
 
 #####################################################################################################################
@@ -646,12 +668,22 @@ for model_num in range(models_to_test):
     # Change from a 3 Hidden-Layer Neural Network to a 2 Hidden-Layer Network. This is an attempt to add
     # Variation to the Networks to help boost the outcome when they are averaged together.
 
-    if model_num < 3:
+    if model_num < 1:
 
         test_model = keras.Sequential([
             normalizer,
             layers.Dense(model_num + 10, activation='relu'),
             layers.Dense(model_num + 10, activation='relu'),
+            layers.Dense(model_num + 10, activation='relu'),
+            layers.Dense(1)
+        ])
+
+    elif model_num < 2:
+
+        test_model = keras.Sequential([
+            normalizer,
+            layers.Dense(model_num, activation='relu'),
+            layers.Dense(model_num, activation='relu'),
             layers.Dense(1)
         ])
 
@@ -722,9 +754,9 @@ mean_ens_guess = []
 for point in test_features:
     raw_guess = []
     for model in models:
-        print(point)
-        print(len(point))
-        print(model)
+        # print(point)
+        # print(len(point))
+        # print(model)
         raw_guess.append(model.predict(point))
 
     # print(raw_guess)
@@ -753,28 +785,28 @@ print("------------------------------------------------------------")
 
 # Commented Out for Testing
 
-# plt.subplot(1,3,1)
-# plt.plot(history.history['loss'], label='loss')
-# plt.plot(history.history['val_loss'], label='val_loss')
-# plt.xlabel('Epoch')
-# plt.ylabel('Error [Guess]')
-# plt.legend()
-# plt.grid(True)
+plt.subplot(1,3,1)
+plt.plot(history.history['loss'], label='loss')
+plt.plot(history.history['val_loss'], label='val_loss')
+plt.xlabel('Epoch')
+plt.ylabel('Error [Guess]')
+plt.legend()
+plt.grid(True)
 
 # Single (Latest) Neural Network Results
 
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 2)
 x = tf.linspace(0.0, len(test_labels) - 1, len(test_labels))
 plt.plot(x, test_labels, label='How Much Actually Traded')
-plt.plot(x, guess, label='Single Network Guess at How Much Was Made')
+plt.plot(x, guess, label='Single Network Guess at Price')
 plt.legend()
 
 # Ensembled Neural Network Results
 
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 3)
 x = tf.linspace(0.0, len(test_labels) - 1, len(test_labels))
 plt.plot(x, test_labels, label='How Much Actually Traded')
-plt.plot(x, mean_ens_guess, label='Ensembled Network Guess at How Much Was Made')
+plt.plot(x, mean_ens_guess, label='Ensembled Network Guess at Price')
 plt.legend()
 
 # Display the Plot
