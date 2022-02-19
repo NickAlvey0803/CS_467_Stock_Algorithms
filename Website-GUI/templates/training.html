@@ -7,7 +7,12 @@
 <body onload="server.training_status_box_update('t_status',
                     't_ds_select', 'm_name_input','train_button',
                     'neurons_per_layer_select','number_of_layers_select',
-                    'output_estimation_span_select')">
+                    'output_estimation_span_select',
+                    'checkbox_putt_call',
+                    'checkbox_junk_bond_demand',
+                    'checkbox_mcclellan_summation_index',
+                    'checkbox_lag_time',
+                    'lag_time_select')">
 
 <table>
     <tr>
@@ -20,20 +25,47 @@
         <td>
             <p>Create Model Name</p>
             <input type="text" id="m_name_input"
-                   onkeyup="enableTrainButton(this)"
+                   onkeyup="enableTrainButton()"
                    style="width:230px;height:20px;line-height:1em;
                    color:black;padding:1px;resize:none;">
         </td>
     </tr>
     <tr>
         <td>
-            <p>Select the training dataset you would like to use:</p>
-            <select style="width:450px" name="t_ds_select" id="t_ds_select">
-              <option value="{{datasets[0]}}" selected>{{datasets[0]}}</option>
-              {% for data in datasets[1:] %}
-                <option value="{{data}}">{{data}}</option>
+            <!--The title of this section will be used as an interlock variable
+                to ensure at least one input is selected for dataset generation
+                ...the 'Generate Dataset' button will only be enabled when
+                at least one input selection checkbox is checked and the user
+                has specified a name for the new dataset. -->
+            <p id="input_interlock" value="False">
+                What inputs would you like to use to create your dataset?</p>
+            <input type="checkbox" id="checkbox_putt_call"
+                name="checkbox_putt_call" value="False"
+                onclick="setInputInterlock(this)">
+            <span>- Putt/Call Ratios</span>
+            <br>
+            <input type="checkbox" id="checkbox_junk_bond_demand"
+                name="checkbox_junk_bond_demand" value="False"
+                onclick="setInputInterlock(this)">
+            <span>- Junk Bond Demand</span>
+            <br>
+            <input type="checkbox" id="checkbox_mcclellan_summation_index"
+                name="checkbox_mcclellan_summation_index" value="False"
+                onclick="setInputInterlock(this)">
+            <span>- McClellan Summation Index</span>
+            <br>
+            <input type="checkbox" id="checkbox_lag_time"
+                name="checkbox_lag_time" value="False"
+                onclick="setLagTimeInterlock(this), setInputInterlock(this)">
+            <span>- Lag Time of </span>
+            <select name="lag_time_select" id="lag_time_select" disabled>
+              <option value="{{lag_time_values[0]}}" selected>
+                                {{lag_time_values[0]}}</option>
+              {% for lag_time_value in lag_time_values[1:] %}
+                <option value="{{lag_time_value}}">{{lag_time_value}}</option>
               {% endfor %}
             </select>
+            <span> Days</span>
         </td>
         <td>
         </td>
@@ -104,7 +136,10 @@
             <button id="train_button"
                     onclick="
                     server.store_user_training_choices('t_status',
-                    't_ds_select', 'm_name_input','train_button',
+                    'm_name_input','train_button',
+                    'checkbox_putt_call','checkbox_junk_bond_demand',
+                    'checkbox_mcclellan_summation_index',
+                    'checkbox_lag_time','lag_time_select',
                     'neurons_per_layer_select','number_of_layers_select',
                     'output_estimation_span_select'),
                     server.disable_training_user_input('t_status',
@@ -138,9 +173,11 @@
 <script>
     // source: https://www.encodedna.com/javascript/
     // disable-or-enable-submit-button-using-javascript.htm
-    function enableTrainButton(m_name_input){
+    function enableTrainButton(){
+        let m_name_input = document.getElementById('m_name_input').value;
         let t_button = document.getElementById('train_button');
-        if (m_name_input.value != '') {
+        if (m_name_input.value != ''&&
+            document.getElementById('input_interlock').value === 'True') {
             t_button.disabled = false;
         }
         else {
@@ -161,5 +198,58 @@
         document.getElementById('t_status').innerHTML = ""
     }
 
+    function setInputInterlock(input_option_checkbox){
+        if (input_option_checkbox.checked){
+            input_option_checkbox.value = "True";
+            document.getElementById('input_interlock').value = 'True'
+
+            // This function call will attempt to enable the 'Generate Dataset'
+            // button, in order for that button to be enabled... the user must
+            // at least select one input and a Dataset name.
+            enableTrainButton()
+        } else{
+            // Set this checkbox to false if it was unchecked by the user
+           input_option_checkbox.value = "False";
+
+        // Get all the checkboxes status by looping through a list.
+        // this also checks for any checkmarks that have already been checked
+        // if one is found 'any_checked' is set to true.  This will be used
+        // further down when determining what the status of the
+        // 'input_interlock' value should be.  This interlock is one of the two
+        // interlocks that must be satisfied in order for the
+        // 'Generate Dataset' button to be enabled.
+        // (the other is 'Dataset Name')
+            let any_checked = false
+            const check_box_id_array = ["checkbox_putt_call",
+                                        "checkbox_junk_bond_demand",
+                                        "checkbox_mcclellan_summation_index",
+                                        "checkbox_lag_time"]
+
+            for (let i = 0; i < check_box_id_array.length; i++) {
+                if (document.getElementById(check_box_id_array[i]).value
+                                                                === "True") {
+                    any_checked = true
+                }
+            }
+            if (any_checked === false) {
+                document.getElementById('input_interlock').value = 'False'
+                enableTrainButton()
+            }
+        }
+    }
+
+    // This little function enables/disables the lag time selector when the Lag Time
+    // check mark is checked by the user.
+    function setLagTimeInterlock(checkbox_lag_time){
+        if (checkbox_lag_time.checked){
+            document.getElementById('lag_time_select').disabled = false
+        }else{
+            document.getElementById('lag_time_select').disabled = true
+        }
+    }
+
+    function forceReload(){
+        window.location.reload( true )
+    }
 </script>
 </html>
