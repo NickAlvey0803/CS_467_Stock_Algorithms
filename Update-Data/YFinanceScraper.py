@@ -16,10 +16,10 @@ exec(open("./scrape_cp_ratio.py").read())
 # Now run the YFinanceScraper code below....
 """These are the 3x ETF tickers provided by: https://etfdb.com/themes/leveraged-3x-etfs/ """
 tickers = ["TQQQ", "SOXL", "FAS", "UPRO", "SPXL", "TECL", "SQQQ", "TNA",
-           "FNGU", "LABU", "UDOW", "ERX", "NUGT", "SPXU", "YINN", "DPST", "TZA", "SPXS", "TMF", "TMV", "URTY", "SDOW",
-           "DFEN", "NAIL", "CURE", "TTT", "BRZU", "SRTY", "SOXS", "EDC", "DRN", "FAZ", "RETL", "FNGD", "TECS", "INDL",
-           "MIDU", "TPOR", "YANG", "LABD", "UMDD", "SBND", "EURL", "DUSL", "KORU", "TYO", "EDZ", "DRV", "UBOT", "PILL",
-           "ERY", "TYD", "UTSL", "OILU", "MEXX", "SMDD", "OILD"]
+           "FNGU", "LABU", "UDOW", "SPXU", "YINN", "DPST", "TZA", "SPXS", "TMF", "TMV", "URTY", "SDOW",
+           "DFEN", "NAIL", "CURE", "TTT", "SRTY", "SOXS", "EDC", "DRN", "FAZ", "RETL", "FNGD", "TECS",
+           "MIDU", "TPOR", "YANG", "LABD", "UMDD", "SBND", "EURL", "DUSL", "KORU", "TYO", "EDZ", "DRV", "PILL",
+           "TYD", "UTSL", "OILU", "MEXX", "SMDD", "OILD"]
 
 # These are 'junktickers' pulled from yahoo finance
 junktickers = ["FTSL", "HYG", "JNK", "SRLN", "USHY"]

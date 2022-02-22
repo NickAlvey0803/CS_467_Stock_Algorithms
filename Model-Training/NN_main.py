@@ -74,7 +74,7 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
     counter = 0
 
     print("Checking for dataset...")
-    if os.path.exists("../Data/Complete-Datasets/ETF_out.csv"):
+    if os.path.exists("../Data/Built-Datasets/ETF_out.csv"):
         print("ETF_out.csv already exists, Loading dataset...")
         Whole_ETF_3x = pd.read_csv('../Data/Built-Datasets/ETF_out.csv')
         print("SHAPE IS: ")
@@ -89,8 +89,12 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
 
             # Added to reference the name of the CSV file later in script
             path = ETF_csvs[:25]
-            name = ETF_csvs[25:]
+            name = ETF_csvs[15:]
 
+            # print("Path is: ", ETF_csvs[:25])
+            # print("Name is: ", ETF_csvs[15:])
+
+            #print('NAME IS AT TOP: ', name)
             # ETFfile = 'TQQQ.csv'
             ETF_3x = pd.read_csv(ETF_csvs)
 
@@ -341,10 +345,10 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
 
         #####################################################################################################################
 
-            Quantpath = '3X-ETF-Backtests-CSharp/'
+            Quantpath = '../Data/3X-ETF-Backtests-CSharp/'
 
             Quantfile = name
-
+            #print("Name is: ",name)
             Quant_rawdata = None
 
             # Note, for now, columns are off by one, so "Date" here equates to the column of "Value"
@@ -393,8 +397,8 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
                     # do temp_percent for percentage change, start for total amount in inventory
                     ETF_3x.iloc[days, ETF_3x.columns.get_loc('Profit Percentage')] = temp_percent
 
-                print(name + " Profit Percentage by Trading Algorithm Compiled and Appended to Dataframe")
-                print("------------------------------------------------------------")
+                #print(name + " Profit Percentage by Trading Algorithm Compiled and Appended to Dataframe")
+                #print("------------------------------------------------------------")
             else:
                 ETF_3x['Profit Percentage'] = np.nan
 
