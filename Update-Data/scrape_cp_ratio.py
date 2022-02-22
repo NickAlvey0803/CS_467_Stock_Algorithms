@@ -79,7 +79,7 @@ def remove_market_close_days(scrapeDict):
             del scrapeDict[datetime.datetime.strptime(i, "%Y-%m-%d").date()]
         except KeyError:
             continue
-    print_and_write_status("Adjusted for opt-out-days:", len(scrapeDict.keys()))
+    #print("Adjusted for opt-out-days:", len(scrapeDict.keys()))
     return scrapeDict
 
 
@@ -110,12 +110,9 @@ def run_scraper(start_date=datetime.date(2019, 10, 5)):
             weekdays.append(run_date)
         run_date += delta
     if len(weekdays)>0:
-
-        print_and_write_status("Updating Put-Call-Ratio's...")
-
         for i, get_date in enumerate(weekdays):
             html_date = datetime.datetime.strftime(get_date, "%Y-%m-%d")
-            print_and_write_status(get_date, end="|")
+            #print(get_date, end="|")
             data = get(base_url + html_date)
             if data == None:
                 print_and_write_status("no data")
@@ -146,18 +143,18 @@ def run_scraper(start_date=datetime.date(2019, 10, 5)):
         df["total"] = df.apply(lambda row: row.iloc[1].iloc[1][3], axis=1)
         df["p_c_ratio"] = df.apply(lambda row: row.iloc[0].iloc[0][1], axis=1)
         df = df.drop(axis="columns", columns=[0, 1])
-        print_and_write_status(df.tail(), df.shape)
+        #print(df.tail(), df.shape)
 
         # The following cell loads totalpc.csv
         # It then appends the data and saves it as a new file
         total_df = pd.read_csv(output_file, index_col=0, parse_dates=True)
-        print_and_write_status(total_df.tail(), total_df.shape)
+        #print(total_df.tail(), total_df.shape)
         final_df = pd.concat([total_df, df], axis=0, verify_integrity=True, sort=True)
         final_df = final_df.astype({"calls": "int32", "total": "int32", "puts": "int32"})
         final_df = final_df[["calls", "puts", "total", "p_c_ratio"]]
-        print_and_write_status(final_df.tail(), final_df.shape)
-        print_and_write_status(final_df.dtypes)
-        print_and_write_status(final_df.tail())
+        #print(final_df.tail(), final_df.shape)
+        #print(final_df.dtypes)
+        #print(final_df.tail())
         # cleanup
         final_df = final_df.dropna(axis=0)
         final_df.to_csv(output_file)
