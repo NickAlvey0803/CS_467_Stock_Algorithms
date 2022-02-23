@@ -79,6 +79,7 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
         Whole_ETF_3x = pd.read_csv('../Data/Built-Datasets/ETF_out.csv')
         print("SHAPE IS: ")
         print(Whole_ETF_3x.shape)
+        print("Type is: ", type(Whole_ETF_3x))
         print("------------------------------------------------------------")
     else:
         print("~No dataset found~")
@@ -662,7 +663,7 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
         print("Saving dataset...")
         Whole_ETF_3x.to_csv('../Data/Built-Datasets/ETF_out.csv')
 
-        return Whole_ETF_3x
+    return Whole_ETF_3x
 
 # future_num_days = 15  # starting value, can be changed to any number
 
@@ -672,8 +673,10 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
 
 #####################################################################################################################
 
-def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 100, lim1 = 15, lim2 = 35,
-                        lim3 = 60, base_epochs = 250, base_learning_rate = 0.001):
+def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
+                        lim3 = 60, base_epochs = 1, base_learning_rate = 0.1):
+
+    print(type(Whole_ETF_3x))
     """
 
     :param Whole_ETF_3x: Pandas Dataframe of the dataset
