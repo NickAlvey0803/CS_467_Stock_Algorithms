@@ -12,17 +12,19 @@ from time import sleep
 
 # Add the path to the Data folder
 sys.path.insert(1, '../Data')
+sys.path.insert(1, '../Update-Data')
+sys.path.insert(1, '../Website-GUI')
+
 totalpc_filename = "totalpc.csv"
-pickle_file = "scraped_data.pkl"
+pickle_file = "../Update-Data/scraped_data.pkl"
 output_file = "../Data/Put-Call-Ratio/" + totalpc_filename
 
 # Setup function that prints and writes status to Update-Data-Status file
+# This function prints and updates the Update-Data-Status.txt file
 def print_and_write_status(string):
     print(string)
-    with open("Update-Data-Status.txt", 'a') as f:
-        f.writelines("\n" + string)
-
-
+    with open("../Website-GUI/status.txt", 'a') as f:
+        f.writelines(string + "\n")
 
 # Make the Put-Call-Ratio folder if it doesnt exhist
 if not os.path.exists(output_file):

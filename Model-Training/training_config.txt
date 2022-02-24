@@ -1,8 +1,12 @@
-Model Name: Model 2
-Putt/Call: True
-Junk Bond Demand: True
-McClellan Summation Index: True
-Lag Time: False
-Neurons Per Layer: 50
-Number of Layers: 10
-Estimation Span: 30
+Model_Name: Model 1
+Models_to_Test: 1
+Number_of_Epochs: 1
+Base_Learning_Rate: 0.1
+Lead_Up_Days: 2
+Limit1: 15
+Limit2: 30
+Limit3: 50
+Momentum_Consideration: 16
+Putt_Call: 1
+Junk_Bond: 1
+McClellan_Summation: 1

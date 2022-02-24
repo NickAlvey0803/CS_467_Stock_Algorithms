@@ -15,7 +15,7 @@ from scipy.stats import linregress
 import datetime
 import matplotlib.pyplot as plt
 import sys
-
+from keras.callbacks import Callback
 # For Neural Networks
 
 import tensorflow as tf
@@ -46,8 +46,11 @@ print("------------------------------------------------------------")
 
 #####################################################################################################################
 
-def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, putcallflag = 0,
+def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
                   junkbondflag = 0, mcclellanflag = 0, future_num_days = 10):
+    # Number of days in sample to consider leading up to current day, lowest it should be is 2
+    ETFpath = '../Data/3x-ETF/'
+    N = lead_up_days
     """
 
     :param ETFpath:
@@ -74,19 +77,16 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
     counter = 0
 
     print("Checking for dataset...")
-    if os.path.exists("../Data/Built-Datasets/ETF_out.csv"):
-        print("ETF_out.csv already exists, Loading dataset...")
+    if os.path.exists("../Data/Built-Datasets/" + str(tfd['Model_Name'])):
+        print_and_write_status("ETF_out.csv already exists, Loading dataset...")
         Whole_ETF_3x = pd.read_csv('../Data/Built-Datasets/ETF_out.csv')
-        print("SHAPE IS: ")
-        print(Whole_ETF_3x.shape)
-        print("Type is: ", type(Whole_ETF_3x))
-        print("------------------------------------------------------------")
     else:
-        print("~No dataset found~")
-        print("Building Dataset...")
+        print_and_write_status("\n~No dataset found~")
+        print_and_write_status("\n\nBuilding Dataset...")
         for ETF_csvs in ETFfiles:
             counter += 1
-            print("Dataset creation " + "{:.2f}".format(float((counter/number_of_ETFfiles)*100)) + "% complete")
+            print_and_write_status("...Dataset creation " + "{:.2f}".format(float((counter/number_of_ETFfiles)*100)) +
+                                   "% complete")
 
             # Added to reference the name of the CSV file later in script
             path = ETF_csvs[:25]
@@ -660,8 +660,8 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
             # print("SHAPE IS: ")
             # print(Whole_ETF_3x.shape)
             # print("------------------------------------------------------------")
-        print("Saving dataset...")
-        Whole_ETF_3x.to_csv('../Data/Built-Datasets/ETF_out.csv')
+        print_and_write_status("Saving dataset...")
+        Whole_ETF_3x.to_csv('../Data/Built-Datasets/' + str(tfd['Model_Name']))
 
     return Whole_ETF_3x
 
@@ -676,7 +676,6 @@ def CreateDataset(ETFpath = '../Data/3x-ETF/', N = 2, consideration_days = 90, p
 def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
                         lim3 = 60, base_epochs = 1, base_learning_rate = 0.1):
 
-    print(type(Whole_ETF_3x))
     """
 
     :param Whole_ETF_3x: Pandas Dataframe of the dataset
@@ -691,8 +690,8 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
 
     """
 
-    print("Data Set Preparing for Neural Network Testing")
-    print("------------------------------------------------------------")
+    print_and_write_status("Data Set Preparing for Neural Network Testing")
+    print_and_write_status("------------------------------------------------------------")
 
     # Separating Training Data from Test Data
 
@@ -716,8 +715,8 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
     normalizer = tf.keras.layers.Normalization(axis=-1)
     normalizer.adapt(np.array(train_features))
 
-    print("The Data has been prepared, the Neural Network is being Created")
-    print("------------------------------------------------------------")
+    print_and_write_status("The Data has been prepared, the Neural Network is being Created")
+    print_and_write_status("------------------------------------------------------------")
 
     #####################################################################################################################
 
@@ -803,6 +802,10 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
         test_model.compile(loss='mean_squared_error',
                            optimizer=tf.keras.optimizers.Adam(learning_rate=lr_schedule), metrics=['mse'])
 
+        sys.stdout = open("../Website-GUI/status.txt", 'a')
+
+        print("\n\nBeginning Training.....\n")
+
         print("The Neural Network ID Number: " + str(model_num) + " has been Created and Compiled")
         print("------------------------------------------------------------")
 
@@ -813,7 +816,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
             train_features,
             train_labels,
             validation_split=0.20,
-            verbose=1, epochs=base_epochs + 10 * models_to_test)
+            verbose=2, epochs=base_epochs + 10 * models_to_test,)
 
         print("Saving Neural Network ID Number: " + str(model_num))
         print("------------------------------------------------------------")
@@ -912,14 +915,35 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
     # Storing results for later
 
     test_results = {'test_model': test_model.evaluate(test_features, test_labels, verbose=0)}
-
+    print("Done.")
     #####################################################################################################################
-
     return 'Trained-Models/'
-
+    sys.stdout.close()
+    print_and_write_status("Training Complete")
 if __name__ == "__main__":
+    # Send all out put to status file
+    def print_and_write_status(string):
+        sys.stdout = open("../Website-GUI/status.txt", 'a')
+        print(string)
+        sys.stdout.close()
 
-    ETF_created = CreateDataset()
+    # Put the training config into a dictionary
+    with open("../Model-Training/training_config.txt", "r") as training_config_file:
+        lines = training_config_file.readlines()
+
+    # tfd stands for 'training config dict'
+    tfd = {}
+    for line in lines:
+        for i in range(len(line)):
+            if line[i] == ":":
+                key = line[:i]
+                value = line[(i+2):-1]
+                tfd[key] = value
+
+
+    ETF_created = CreateDataset(int(tfd["Lead_Up_Days"]), int(tfd["Momentum_Consideration"]), int(tfd["Putt_Call"]),
+                                int(tfd["Junk_Bond"]), int(tfd["McClellan_Summation"]))
+
     location_of_models = CreateNeuralNetwork(ETF_created)
 
 

@@ -7,11 +7,16 @@ import yfinance as yf
 import requests
 from datetime import date
 
+
+
 # Add the path to the Data folder
 sys.path.insert(1, '../Data')
+sys.path.insert(1, '../Update-Data')
+sys.path.insert(1, '../Website-GUI')
+sys.path.insert(1, '../Model-Training')
 
 # Run the CBOE scraper code first
-exec(open("./scrape_cp_ratio.py").read())
+exec(open("../Update-Data/scrape_cp_ratio.py").read())
 
 # Now run the YFinanceScraper code below....
 """These are the 3x ETF tickers provided by: https://etfdb.com/themes/leveraged-3x-etfs/ """
@@ -29,8 +34,8 @@ mcClellan = ["DOW", "SPX"]
 # This function prints and updates the Update-Data-Status.txt file
 def print_and_write_status(string):
     print(string)
-    with open("Update-Data-Status.txt", 'a') as f:
-        f.writelines("\n" + string)
+    with open("../Website-GUI/status.txt", 'a') as f:
+        f.writelines(string + "\n")
 
 
 def get_3xETF_tickers():
@@ -102,7 +107,7 @@ def get_mcClellan():
     # Get the DOW's  -------------------------------
     dow = yf.Ticker("DOW")
     # prints to console to show user progress
-    print_and_write_status("...Updating DOW ")
+    print_and_write_status("...Updating DOW")
     # get historical market data
     dowHist = dow.history(period="max")
 
@@ -110,13 +115,16 @@ def get_mcClellan():
     dowHist.to_csv('../Data/McClellan-Summation-Index/' + "DOW" + '.csv')
 
 
-print_and_write_status("Updating 3xETF's...")
+print_and_write_status("\nUpdating 3xETF's...")
 get_3xETF_tickers()
 
-print_and_write_status("Updating Junk Bonds...")
+print_and_write_status("\nUpdating Junk Bonds...")
 get_junk_tickers()
 
-print_and_write_status("Updating mcClellan...")
+print_and_write_status("\nUpdating mcClellan...")
 get_mcClellan()
 
-print_and_write_status("Update Complete")
+print_and_write_status("\n~~Update Complete~~")
+print_and_write_status("\n------End of Update------")
+
+exec(open("../Model-Training/NN_main.py").read())
