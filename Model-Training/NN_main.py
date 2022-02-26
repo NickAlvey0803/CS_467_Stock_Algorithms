@@ -823,7 +823,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
 
         # Save Neural Network in Folder for 1) Later Reference, or 2) Manipulation from GUI
 
-        test_model.save('Trained-Models/' + str(model_num))
+        test_model.save('../Model-Training/Trained-Models/' + str(model_num))
 
     #####################################################################################################################
 
@@ -917,7 +917,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
     test_results = {'test_model': test_model.evaluate(test_features, test_labels, verbose=0)}
     print("Done.")
     #####################################################################################################################
-    return 'Trained-Models/'
+    return '../Model-Training/Trained-Models/'
     sys.stdout.close()
     print_and_write_status("Training Complete")
 if __name__ == "__main__":
