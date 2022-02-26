@@ -79,7 +79,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
     print("Checking for dataset...")
     if os.path.exists("../Data/Built-Datasets/" + str(tfd['Model_Name'])):
         print_and_write_status("ETF_out.csv already exists, Loading dataset...")
-        Whole_ETF_3x = pd.read_csv('../Data/Built-Datasets/ETF_out.csv')
+        Whole_ETF_3x = pd.read_csv('../Data/Built-Datasets/' + str(tfd['Model_Name']))
     else:
         print_and_write_status("\n~No dataset found~")
         print_and_write_status("\n\nBuilding Dataset...")
@@ -838,7 +838,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
 
     models = []
     for i in range(models_to_test):
-        modelTemp = load_model('Trained-Models/' + str(i))
+        modelTemp = load_model('../Model-Training/Trained-Models/' + str(i))
         models.append(modelTemp)
 
     mean_ens_guess = []
