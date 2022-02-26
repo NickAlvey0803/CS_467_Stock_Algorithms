@@ -78,7 +78,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
 
     print("Checking for dataset...")
     if os.path.exists("../Data/Built-Datasets/" + str(tfd['Model_Name'])):
-        print_and_write_status("ETF_out.csv already exists, Loading dataset...")
+        print_and_write_status(str(tfd['Model_Name']) + " already exists, Loading dataset...")
         Whole_ETF_3x = pd.read_csv('../Data/Built-Datasets/' + str(tfd['Model_Name']))
     else:
         print_and_write_status("\n~No dataset found~")
@@ -823,7 +823,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
 
         # Save Neural Network in Folder for 1) Later Reference, or 2) Manipulation from GUI
 
-        test_model.save('../Model-Training/Trained-Models/' + str(model_num))
+        test_model.save('../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/' + str(model_num))
 
     #####################################################################################################################
 
@@ -838,7 +838,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
 
     models = []
     for i in range(models_to_test):
-        modelTemp = load_model('../Model-Training/Trained-Models/' + str(i))
+        modelTemp = load_model('../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/' + str(i))
         models.append(modelTemp)
 
     mean_ens_guess = []
@@ -915,11 +915,10 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
     # Storing results for later
 
     test_results = {'test_model': test_model.evaluate(test_features, test_labels, verbose=0)}
-    print("Done.")
+    print("Training Complete", end="")
     #####################################################################################################################
-    return '../Model-Training/Trained-Models/'
+    return '../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/'
     sys.stdout.close()
-    print_and_write_status("Training Complete")
 if __name__ == "__main__":
     # Send all out put to status file
     def print_and_write_status(string):
