@@ -138,556 +138,79 @@ The Neural Network ID Number: 0 has been Created and Compiled
 The Neural Network ID Number: 0 is Starting to Run Over the Training Data
 ------------------------------------------------------------
 Epoch 1/51
-2846/2846 - 13s - loss: 5471.1733 - mse: 5471.1733 - val_loss: 5643.1855 - val_mse: 5643.1855 - 13s/epoch - 5ms/step
+2846/2846 - 13s - loss: 5485.6597 - mse: 5485.6597 - val_loss: 5636.7822 - val_mse: 5636.7822 - 13s/epoch - 4ms/step
 Epoch 2/51
-2846/2846 - 13s - loss: 5438.1470 - mse: 5438.1470 - val_loss: 5698.7607 - val_mse: 5698.7607 - 13s/epoch - 5ms/step
+2846/2846 - 12s - loss: 5443.0894 - mse: 5443.0894 - val_loss: 5627.8755 - val_mse: 5627.8755 - 12s/epoch - 4ms/step
 Epoch 3/51
-2846/2846 - 13s - loss: 5431.4585 - mse: 5431.4585 - val_loss: 5641.4302 - val_mse: 5641.4302 - 13s/epoch - 5ms/step
+2846/2846 - 12s - loss: 5439.2632 - mse: 5439.2632 - val_loss: 5645.7847 - val_mse: 5645.7847 - 12s/epoch - 4ms/step
 Epoch 4/51
-2846/2846 - 13s - loss: 5423.2847 - mse: 5423.2847 - val_loss: 5609.0459 - val_mse: 5609.0459 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5434.3364 - mse: 5434.3364 - val_loss: 5608.8604 - val_mse: 5608.8604 - 12s/epoch - 4ms/step
 Epoch 5/51
-2846/2846 - 13s - loss: 5421.0684 - mse: 5421.0684 - val_loss: 5615.3218 - val_mse: 5615.3218 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5423.4160 - mse: 5423.4160 - val_loss: 5615.7417 - val_mse: 5615.7417 - 12s/epoch - 4ms/step
 Epoch 6/51
-2846/2846 - 13s - loss: 5411.0859 - mse: 5411.0859 - val_loss: 5611.4385 - val_mse: 5611.4385 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5416.7202 - mse: 5416.7202 - val_loss: 5624.0220 - val_mse: 5624.0220 - 12s/epoch - 4ms/step
 Epoch 7/51
-2846/2846 - 13s - loss: 5407.8110 - mse: 5407.8110 - val_loss: 5621.6519 - val_mse: 5621.6519 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5412.1973 - mse: 5412.1973 - val_loss: 5615.7163 - val_mse: 5615.7163 - 12s/epoch - 4ms/step
 Epoch 8/51
-2846/2846 - 13s - loss: 5406.0854 - mse: 5406.0854 - val_loss: 5603.8809 - val_mse: 5603.8809 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5412.5830 - mse: 5412.5830 - val_loss: 5593.5859 - val_mse: 5593.5859 - 12s/epoch - 4ms/step
 Epoch 9/51
-2846/2846 - 13s - loss: 5406.2056 - mse: 5406.2056 - val_loss: 5616.6372 - val_mse: 5616.6372 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5410.8916 - mse: 5410.8916 - val_loss: 5593.4463 - val_mse: 5593.4463 - 12s/epoch - 4ms/step
 Epoch 10/51
-2846/2846 - 13s - loss: 5403.5874 - mse: 5403.5874 - val_loss: 5602.0615 - val_mse: 5602.0615 - 13s/epoch - 5ms/step
+2846/2846 - 12s - loss: 5410.2275 - mse: 5410.2275 - val_loss: 5608.9131 - val_mse: 5608.9131 - 12s/epoch - 4ms/step
 Epoch 11/51
-2846/2846 - 13s - loss: 5400.9346 - mse: 5400.9346 - val_loss: 5587.3618 - val_mse: 5587.3618 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5406.7280 - mse: 5406.7280 - val_loss: 5601.4805 - val_mse: 5601.4805 - 12s/epoch - 4ms/step
 Epoch 12/51
-2846/2846 - 13s - loss: 5398.5034 - mse: 5398.5034 - val_loss: 5597.7178 - val_mse: 5597.7178 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5405.4292 - mse: 5405.4292 - val_loss: 5585.2378 - val_mse: 5585.2378 - 12s/epoch - 4ms/step
 Epoch 13/51
-2846/2846 - 12s - loss: 5394.8696 - mse: 5394.8696 - val_loss: 5636.0850 - val_mse: 5636.0850 - 12s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5404.9458 - mse: 5404.9458 - val_loss: 5640.1177 - val_mse: 5640.1177 - 12s/epoch - 4ms/step
 Epoch 14/51
-2846/2846 - 13s - loss: 5387.4814 - mse: 5387.4814 - val_loss: 5592.0249 - val_mse: 5592.0249 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5402.6387 - mse: 5402.6387 - val_loss: 5610.4858 - val_mse: 5610.4858 - 12s/epoch - 4ms/step
 Epoch 15/51
-2846/2846 - 13s - loss: 5396.0532 - mse: 5396.0532 - val_loss: 5590.0996 - val_mse: 5590.0996 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5402.7349 - mse: 5402.7349 - val_loss: 5617.4087 - val_mse: 5617.4087 - 12s/epoch - 4ms/step
 Epoch 16/51
-2846/2846 - 13s - loss: 5397.1841 - mse: 5397.1841 - val_loss: 5610.1108 - val_mse: 5610.1108 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5395.4390 - mse: 5395.4390 - val_loss: 5622.8203 - val_mse: 5622.8203 - 12s/epoch - 4ms/step
 Epoch 17/51
-2846/2846 - 13s - loss: 5393.8047 - mse: 5393.8047 - val_loss: 5595.8369 - val_mse: 5595.8369 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5393.5020 - mse: 5393.5020 - val_loss: 5613.4873 - val_mse: 5613.4873 - 12s/epoch - 4ms/step
 Epoch 18/51
-2846/2846 - 13s - loss: 5389.3804 - mse: 5389.3804 - val_loss: 5575.0391 - val_mse: 5575.0391 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5402.4077 - mse: 5402.4077 - val_loss: 5622.7007 - val_mse: 5622.7007 - 12s/epoch - 4ms/step
 Epoch 19/51
-2846/2846 - 13s - loss: 5395.2969 - mse: 5395.2969 - val_loss: 5603.5186 - val_mse: 5603.5186 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5404.7725 - mse: 5404.7725 - val_loss: 5657.2803 - val_mse: 5657.2803 - 12s/epoch - 4ms/step
 Epoch 20/51
-2846/2846 - 13s - loss: 5398.9976 - mse: 5398.9976 - val_loss: 5599.8896 - val_mse: 5599.8896 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5391.6406 - mse: 5391.6406 - val_loss: 5616.6475 - val_mse: 5616.6475 - 12s/epoch - 4ms/step
 Epoch 21/51
-2846/2846 - 13s - loss: 5392.5601 - mse: 5392.5601 - val_loss: 5619.1099 - val_mse: 5619.1099 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5396.4126 - mse: 5396.4126 - val_loss: 5610.8052 - val_mse: 5610.8052 - 12s/epoch - 4ms/step
 Epoch 22/51
-2846/2846 - 13s - loss: 5391.1001 - mse: 5391.1001 - val_loss: 5580.0776 - val_mse: 5580.0776 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5397.6772 - mse: 5397.6772 - val_loss: 5599.8330 - val_mse: 5599.8330 - 12s/epoch - 4ms/step
 Epoch 23/51
-2846/2846 - 13s - loss: 5391.9717 - mse: 5391.9717 - val_loss: 5589.1841 - val_mse: 5589.1841 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5399.5186 - mse: 5399.5186 - val_loss: 5603.2036 - val_mse: 5603.2036 - 12s/epoch - 4ms/step
 Epoch 24/51
-2846/2846 - 13s - loss: 5391.1836 - mse: 5391.1836 - val_loss: 5582.3633 - val_mse: 5582.3633 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5397.1289 - mse: 5397.1289 - val_loss: 5584.0352 - val_mse: 5584.0352 - 12s/epoch - 4ms/step
 Epoch 25/51
-2846/2846 - 13s - loss: 5388.0771 - mse: 5388.0771 - val_loss: 5592.7725 - val_mse: 5592.7725 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5393.6353 - mse: 5393.6353 - val_loss: 5589.0332 - val_mse: 5589.0332 - 12s/epoch - 4ms/step
 Epoch 26/51
-2846/2846 - 13s - loss: 5386.0000 - mse: 5386.0000 - val_loss: 5603.6401 - val_mse: 5603.6401 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5392.5459 - mse: 5392.5459 - val_loss: 5572.7173 - val_mse: 5572.7173 - 12s/epoch - 4ms/step
 Epoch 27/51
-2846/2846 - 13s - loss: 5386.8950 - mse: 5386.8950 - val_loss: 5631.7529 - val_mse: 5631.7529 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5390.3301 - mse: 5390.3301 - val_loss: 5665.7603 - val_mse: 5665.7603 - 12s/epoch - 4ms/step
 Epoch 28/51
-2846/2846 - 13s - loss: 5387.4307 - mse: 5387.4307 - val_loss: 5572.7036 - val_mse: 5572.7036 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5389.3335 - mse: 5389.3335 - val_loss: 5610.2534 - val_mse: 5610.2534 - 12s/epoch - 4ms/step
 Epoch 29/51
-2846/2846 - 13s - loss: 5389.1333 - mse: 5389.1333 - val_loss: 5601.4263 - val_mse: 5601.4263 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5394.8823 - mse: 5394.8823 - val_loss: 5638.9019 - val_mse: 5638.9019 - 12s/epoch - 4ms/step
 Epoch 30/51
-2846/2846 - 13s - loss: 5383.9165 - mse: 5383.9165 - val_loss: 5592.1465 - val_mse: 5592.1465 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5390.5776 - mse: 5390.5776 - val_loss: 5586.6035 - val_mse: 5586.6035 - 12s/epoch - 4ms/step
 Epoch 31/51
-2846/2846 - 13s - loss: 5389.3115 - mse: 5389.3115 - val_loss: 5601.1030 - val_mse: 5601.1030 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5391.8936 - mse: 5391.8936 - val_loss: 5595.5757 - val_mse: 5595.5757 - 12s/epoch - 4ms/step
 Epoch 32/51
-2846/2846 - 13s - loss: 5387.5010 - mse: 5387.5010 - val_loss: 5591.7129 - val_mse: 5591.7129 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5414.7153 - mse: 5414.7153 - val_loss: 5580.8120 - val_mse: 5580.8120 - 12s/epoch - 4ms/step
 Epoch 33/51
-2846/2846 - 13s - loss: 5389.0557 - mse: 5389.0557 - val_loss: 5593.8418 - val_mse: 5593.8418 - 13s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5383.6143 - mse: 5383.6143 - val_loss: 5623.1714 - val_mse: 5623.1714 - 12s/epoch - 4ms/step
 Epoch 34/51
-2846/2846 - 12s - loss: 5384.9287 - mse: 5384.9287 - val_loss: 5600.1733 - val_mse: 5600.1733 - 12s/epoch - 4ms/step
+2846/2846 - 12s - loss: 5382.8257 - mse: 5382.8257 - val_loss: 5586.8843 - val_mse: 5586.8843 - 12s/epoch - 4ms/step
 Epoch 35/51
-2846/2846 - 13s - loss: 5386.3750 - mse: 5386.3750 - val_loss: 5582.4282 - val_mse: 5582.4282 - 13s/epoch - 4ms/step
+2846/2846 - 13s - loss: 5384.5361 - mse: 5384.5361 - val_loss: 5590.6084 - val_mse: 5590.6084 - 13s/epoch - 4ms/step
 Epoch 36/51
-2846/2846 - 13s - loss: 5384.7002 - mse: 5384.7002 - val_loss: 5576.6118 - val_mse: 5576.6118 - 13s/epoch - 4ms/step
+2846/2846 - 13s - loss: 5383.6123 - mse: 5383.6123 - val_loss: 5587.6025 - val_mse: 5587.6025 - 13s/epoch - 5ms/step
 Epoch 37/51
-2846/2846 - 13s - loss: 5387.5161 - mse: 5387.5161 - val_loss: 5636.9590 - val_mse: 5636.9590 - 13s/epoch - 4ms/step
+2846/2846 - 13s - loss: 5386.0942 - mse: 5386.0942 - val_loss: 5616.4956 - val_mse: 5616.4956 - 13s/epoch - 5ms/step
 Epoch 38/51
-2846/2846 - 13s - loss: 5384.2153 - mse: 5384.2153 - val_loss: 5591.7056 - val_mse: 5591.7056 - 13s/epoch - 4ms/step
+2846/2846 - 14s - loss: 5384.7651 - mse: 5384.7651 - val_loss: 5599.8823 - val_mse: 5599.8823 - 14s/epoch - 5ms/step
 Epoch 39/51
-2846/2846 - 13s - loss: 5388.0225 - mse: 5388.0225 - val_loss: 5604.2241 - val_mse: 5604.2241 - 13s/epoch - 4ms/step
-Epoch 40/51
-2846/2846 - 13s - loss: 5384.0981 - mse: 5384.0981 - val_loss: 5570.8560 - val_mse: 5570.8560 - 13s/epoch - 4ms/step
-Epoch 41/51
-2846/2846 - 13s - loss: 5385.3125 - mse: 5385.3125 - val_loss: 5583.6187 - val_mse: 5583.6187 - 13s/epoch - 4ms/step
-Epoch 42/51
-2846/2846 - 13s - loss: 5383.9121 - mse: 5383.9121 - val_loss: 5629.9185 - val_mse: 5629.9185 - 13s/epoch - 4ms/step
-Epoch 43/51
-2846/2846 - 13s - loss: 5389.3008 - mse: 5389.3008 - val_loss: 5630.3379 - val_mse: 5630.3379 - 13s/epoch - 4ms/step
-Epoch 44/51
-2846/2846 - 13s - loss: 5385.3145 - mse: 5385.3145 - val_loss: 5583.5078 - val_mse: 5583.5078 - 13s/epoch - 4ms/step
-Epoch 45/51
-2846/2846 - 13s - loss: 5380.6592 - mse: 5380.6592 - val_loss: 5579.0435 - val_mse: 5579.0435 - 13s/epoch - 4ms/step
-Epoch 46/51
-2846/2846 - 13s - loss: 5379.2988 - mse: 5379.2988 - val_loss: 5634.4922 - val_mse: 5634.4922 - 13s/epoch - 4ms/step
-Epoch 47/51
-2846/2846 - 13s - loss: 5378.4219 - mse: 5378.4219 - val_loss: 5586.9985 - val_mse: 5586.9985 - 13s/epoch - 4ms/step
-Epoch 48/51
-2846/2846 - 13s - loss: 5381.4365 - mse: 5381.4365 - val_loss: 5575.6162 - val_mse: 5575.6162 - 13s/epoch - 4ms/step
-Epoch 49/51
-2846/2846 - 13s - loss: 5379.2090 - mse: 5379.2090 - val_loss: 5582.5156 - val_mse: 5582.5156 - 13s/epoch - 4ms/step
-Epoch 50/51
-2846/2846 - 13s - loss: 5388.6846 - mse: 5388.6846 - val_loss: 5592.6968 - val_mse: 5592.6968 - 13s/epoch - 4ms/step
-Epoch 51/51
-2846/2846 - 13s - loss: 5388.3696 - mse: 5388.3696 - val_loss: 5586.8003 - val_mse: 5586.8003 - 13s/epoch - 4ms/step
-Saving Neural Network ID Number: 0
-------------------------------------------------------------
-
-
-Beginning Training.....
-
-The Neural Network ID Number: 1 has been Created and Compiled
-------------------------------------------------------------
-The Neural Network ID Number: 1 is Starting to Run Over the Training Data
-------------------------------------------------------------
-Epoch 1/51
-2846/2846 - 13s - loss: 5473.7637 - mse: 5473.7637 - val_loss: 5647.9946 - val_mse: 5647.9946 - 13s/epoch - 4ms/step
-Epoch 2/51
-2846/2846 - 12s - loss: 5435.9258 - mse: 5435.9258 - val_loss: 5655.7041 - val_mse: 5655.7041 - 12s/epoch - 4ms/step
-Epoch 3/51
-2846/2846 - 12s - loss: 5428.5879 - mse: 5428.5879 - val_loss: 5613.8037 - val_mse: 5613.8037 - 12s/epoch - 4ms/step
-Epoch 4/51
-2846/2846 - 12s - loss: 5424.3291 - mse: 5424.3291 - val_loss: 5611.5249 - val_mse: 5611.5249 - 12s/epoch - 4ms/step
-Epoch 5/51
-2846/2846 - 12s - loss: 5415.4487 - mse: 5415.4487 - val_loss: 5594.7524 - val_mse: 5594.7524 - 12s/epoch - 4ms/step
-Epoch 6/51
-2846/2846 - 12s - loss: 5417.0591 - mse: 5417.0591 - val_loss: 5606.7061 - val_mse: 5606.7061 - 12s/epoch - 4ms/step
-Epoch 7/51
-2846/2846 - 12s - loss: 5412.2651 - mse: 5412.2651 - val_loss: 5586.5444 - val_mse: 5586.5444 - 12s/epoch - 4ms/step
-Epoch 8/51
-2846/2846 - 13s - loss: 5409.6162 - mse: 5409.6162 - val_loss: 5618.6650 - val_mse: 5618.6650 - 13s/epoch - 4ms/step
-Epoch 9/51
-2846/2846 - 12s - loss: 5405.6548 - mse: 5405.6548 - val_loss: 5598.7275 - val_mse: 5598.7275 - 12s/epoch - 4ms/step
-Epoch 10/51
-2846/2846 - 12s - loss: 5400.3652 - mse: 5400.3652 - val_loss: 5599.2861 - val_mse: 5599.2861 - 12s/epoch - 4ms/step
-Epoch 11/51
-2846/2846 - 13s - loss: 5415.8276 - mse: 5415.8276 - val_loss: 5605.8828 - val_mse: 5605.8828 - 13s/epoch - 4ms/step
-Epoch 12/51
-2846/2846 - 12s - loss: 5398.5024 - mse: 5398.5024 - val_loss: 5588.2529 - val_mse: 5588.2529 - 12s/epoch - 4ms/step
-Epoch 13/51
-2846/2846 - 12s - loss: 5397.9771 - mse: 5397.9771 - val_loss: 5588.9487 - val_mse: 5588.9487 - 12s/epoch - 4ms/step
-Epoch 14/51
-2846/2846 - 12s - loss: 5392.4360 - mse: 5392.4360 - val_loss: 5600.7896 - val_mse: 5600.7896 - 12s/epoch - 4ms/step
-Epoch 15/51
-2846/2846 - 12s - loss: 5397.9785 - mse: 5397.9785 - val_loss: 5593.4873 - val_mse: 5593.4873 - 12s/epoch - 4ms/step
-Epoch 16/51
-2846/2846 - 12s - loss: 5391.6772 - mse: 5391.6772 - val_loss: 5577.4878 - val_mse: 5577.4878 - 12s/epoch - 4ms/step
-Epoch 17/51
-2846/2846 - 12s - loss: 5393.4873 - mse: 5393.4873 - val_loss: 5592.8545 - val_mse: 5592.8545 - 12s/epoch - 4ms/step
-Epoch 18/51
-2846/2846 - 12s - loss: 5394.8052 - mse: 5394.8052 - val_loss: 5629.1069 - val_mse: 5629.1069 - 12s/epoch - 4ms/step
-Epoch 19/51
-2846/2846 - 12s - loss: 5398.5918 - mse: 5398.5918 - val_loss: 5613.3223 - val_mse: 5613.3223 - 12s/epoch - 4ms/step
-Epoch 20/51
-2846/2846 - 13s - loss: 5396.8887 - mse: 5396.8887 - val_loss: 5591.4048 - val_mse: 5591.4048 - 13s/epoch - 4ms/step
-Epoch 21/51
-2846/2846 - 13s - loss: 5390.8291 - mse: 5390.8291 - val_loss: 5622.4102 - val_mse: 5622.4102 - 13s/epoch - 4ms/step
-Epoch 22/51
-2846/2846 - 13s - loss: 5387.7056 - mse: 5387.7056 - val_loss: 5626.7329 - val_mse: 5626.7329 - 13s/epoch - 4ms/step
-Epoch 23/51
-2846/2846 - 13s - loss: 5386.0815 - mse: 5386.0815 - val_loss: 5583.3965 - val_mse: 5583.3965 - 13s/epoch - 4ms/step
-Epoch 24/51
-2846/2846 - 13s - loss: 5388.8237 - mse: 5388.8237 - val_loss: 5607.2671 - val_mse: 5607.2671 - 13s/epoch - 4ms/step
-Epoch 25/51
-2846/2846 - 12s - loss: 5393.0649 - mse: 5393.0649 - val_loss: 5663.2212 - val_mse: 5663.2212 - 12s/epoch - 4ms/step
-Epoch 26/51
-2846/2846 - 13s - loss: 5388.0093 - mse: 5388.0093 - val_loss: 5584.8721 - val_mse: 5584.8721 - 13s/epoch - 4ms/step
-Epoch 27/51
-2846/2846 - 13s - loss: 5399.1548 - mse: 5399.1548 - val_loss: 5608.6997 - val_mse: 5608.6997 - 13s/epoch - 4ms/step
-Epoch 28/51
-2846/2846 - 13s - loss: 5389.7622 - mse: 5389.7622 - val_loss: 5606.7036 - val_mse: 5606.7036 - 13s/epoch - 4ms/step
-Epoch 29/51
-2846/2846 - 12s - loss: 5391.5654 - mse: 5391.5654 - val_loss: 5592.4087 - val_mse: 5592.4087 - 12s/epoch - 4ms/step
-Epoch 30/51
-2846/2846 - 13s - loss: 5388.7720 - mse: 5388.7720 - val_loss: 5590.6821 - val_mse: 5590.6821 - 13s/epoch - 4ms/step
-Epoch 31/51
-2846/2846 - 12s - loss: 5404.6899 - mse: 5404.6899 - val_loss: 5674.8516 - val_mse: 5674.8516 - 12s/epoch - 4ms/step
-Epoch 32/51
-2846/2846 - 13s - loss: 5388.1958 - mse: 5388.1958 - val_loss: 5634.0532 - val_mse: 5634.0532 - 13s/epoch - 4ms/step
-Epoch 33/51
-2846/2846 - 12s - loss: 5394.3809 - mse: 5394.3809 - val_loss: 5589.8916 - val_mse: 5589.8916 - 12s/epoch - 4ms/step
-Epoch 34/51
-2846/2846 - 13s - loss: 5391.5527 - mse: 5391.5527 - val_loss: 5603.6064 - val_mse: 5603.6064 - 13s/epoch - 4ms/step
-Epoch 35/51
-2846/2846 - 12s - loss: 5392.0610 - mse: 5392.0610 - val_loss: 5598.9004 - val_mse: 5598.9004 - 12s/epoch - 4ms/step
-Epoch 36/51
-2846/2846 - 12s - loss: 5387.6914 - mse: 5387.6914 - val_loss: 5576.4819 - val_mse: 5576.4819 - 12s/epoch - 4ms/step
-Epoch 37/51
-2846/2846 - 13s - loss: 5386.0601 - mse: 5386.0601 - val_loss: 5582.2935 - val_mse: 5582.2935 - 13s/epoch - 4ms/step
-Epoch 38/51
-2846/2846 - 13s - loss: 5382.3481 - mse: 5382.3481 - val_loss: 5594.7212 - val_mse: 5594.7212 - 13s/epoch - 4ms/step
-Epoch 39/51
-2846/2846 - 13s - loss: 5379.7988 - mse: 5379.7988 - val_loss: 5588.6836 - val_mse: 5588.6836 - 13s/epoch - 4ms/step
-Epoch 40/51
-2846/2846 - 13s - loss: 5380.9810 - mse: 5380.9810 - val_loss: 5597.6445 - val_mse: 5597.6445 - 13s/epoch - 4ms/step
-Epoch 41/51
-2846/2846 - 13s - loss: 5377.7080 - mse: 5377.7080 - val_loss: 5611.2476 - val_mse: 5611.2476 - 13s/epoch - 4ms/step
-Epoch 42/51
-2846/2846 - 13s - loss: 5376.0322 - mse: 5376.0322 - val_loss: 5584.1934 - val_mse: 5584.1934 - 13s/epoch - 4ms/step
-Epoch 43/51
-2846/2846 - 12s - loss: 5377.6943 - mse: 5377.6943 - val_loss: 5603.3364 - val_mse: 5603.3364 - 12s/epoch - 4ms/step
-Epoch 44/51
-2846/2846 - 13s - loss: 5383.5479 - mse: 5383.5479 - val_loss: 5601.4194 - val_mse: 5601.4194 - 13s/epoch - 4ms/step
-Epoch 45/51
-2846/2846 - 13s - loss: 5380.9253 - mse: 5380.9253 - val_loss: 5581.1396 - val_mse: 5581.1396 - 13s/epoch - 4ms/step
-Epoch 46/51
-2846/2846 - 13s - loss: 5383.4673 - mse: 5383.4673 - val_loss: 5572.8008 - val_mse: 5572.8008 - 13s/epoch - 4ms/step
-Epoch 47/51
-2846/2846 - 13s - loss: 5376.8877 - mse: 5376.8877 - val_loss: 5596.8823 - val_mse: 5596.8823 - 13s/epoch - 4ms/step
-Epoch 48/51
-2846/2846 - 13s - loss: 5381.8052 - mse: 5381.8052 - val_loss: 5603.7417 - val_mse: 5603.7417 - 13s/epoch - 4ms/step
-Epoch 49/51
-2846/2846 - 13s - loss: 5374.7944 - mse: 5374.7944 - val_loss: 5606.7612 - val_mse: 5606.7612 - 13s/epoch - 4ms/step
-Epoch 50/51
-2846/2846 - 12s - loss: 5372.6245 - mse: 5372.6245 - val_loss: 5574.6992 - val_mse: 5574.6992 - 12s/epoch - 4ms/step
-Epoch 51/51
-2846/2846 - 13s - loss: 5378.8774 - mse: 5378.8774 - val_loss: 5605.2588 - val_mse: 5605.2588 - 13s/epoch - 4ms/step
-Saving Neural Network ID Number: 1
-------------------------------------------------------------
-
-
-Beginning Training.....
-
-The Neural Network ID Number: 2 has been Created and Compiled
-------------------------------------------------------------
-The Neural Network ID Number: 2 is Starting to Run Over the Training Data
-------------------------------------------------------------
-Epoch 1/51
-2846/2846 - 13s - loss: 5473.7466 - mse: 5473.7466 - val_loss: 5643.5732 - val_mse: 5643.5732 - 13s/epoch - 4ms/step
-Epoch 2/51
-2846/2846 - 12s - loss: 5442.9492 - mse: 5442.9492 - val_loss: 5645.8940 - val_mse: 5645.8940 - 12s/epoch - 4ms/step
-Epoch 3/51
-2846/2846 - 12s - loss: 5432.7188 - mse: 5432.7188 - val_loss: 5627.3081 - val_mse: 5627.3081 - 12s/epoch - 4ms/step
-Epoch 4/51
-2846/2846 - 12s - loss: 5423.5186 - mse: 5423.5186 - val_loss: 5631.3384 - val_mse: 5631.3384 - 12s/epoch - 4ms/step
-Epoch 5/51
-2846/2846 - 12s - loss: 5421.1021 - mse: 5421.1021 - val_loss: 5611.5415 - val_mse: 5611.5415 - 12s/epoch - 4ms/step
-Epoch 6/51
-2846/2846 - 12s - loss: 5417.3945 - mse: 5417.3945 - val_loss: 5608.7231 - val_mse: 5608.7231 - 12s/epoch - 4ms/step
-Epoch 7/51
-2846/2846 - 12s - loss: 5418.7227 - mse: 5418.7227 - val_loss: 5633.2139 - val_mse: 5633.2139 - 12s/epoch - 4ms/step
-Epoch 8/51
-2846/2846 - 12s - loss: 5412.7666 - mse: 5412.7666 - val_loss: 5605.7700 - val_mse: 5605.7700 - 12s/epoch - 4ms/step
-Epoch 9/51
-2846/2846 - 12s - loss: 5410.3838 - mse: 5410.3838 - val_loss: 5615.4282 - val_mse: 5615.4282 - 12s/epoch - 4ms/step
-Epoch 10/51
-2846/2846 - 12s - loss: 5406.0522 - mse: 5406.0522 - val_loss: 5582.7891 - val_mse: 5582.7891 - 12s/epoch - 4ms/step
-Epoch 11/51
-2846/2846 - 12s - loss: 5400.5879 - mse: 5400.5879 - val_loss: 5604.6841 - val_mse: 5604.6841 - 12s/epoch - 4ms/step
-Epoch 12/51
-2846/2846 - 12s - loss: 5401.1714 - mse: 5401.1714 - val_loss: 5619.4229 - val_mse: 5619.4229 - 12s/epoch - 4ms/step
-Epoch 13/51
-2846/2846 - 12s - loss: 5405.1929 - mse: 5405.1929 - val_loss: 5591.6606 - val_mse: 5591.6606 - 12s/epoch - 4ms/step
-Epoch 14/51
-2846/2846 - 12s - loss: 5400.9492 - mse: 5400.9492 - val_loss: 5587.7090 - val_mse: 5587.7090 - 12s/epoch - 4ms/step
-Epoch 15/51
-2846/2846 - 12s - loss: 5400.1816 - mse: 5400.1816 - val_loss: 5651.0552 - val_mse: 5651.0552 - 12s/epoch - 4ms/step
-Epoch 16/51
-2846/2846 - 12s - loss: 5400.3672 - mse: 5400.3672 - val_loss: 5598.6953 - val_mse: 5598.6953 - 12s/epoch - 4ms/step
-Epoch 17/51
-2846/2846 - 12s - loss: 5398.1128 - mse: 5398.1128 - val_loss: 5609.3472 - val_mse: 5609.3472 - 12s/epoch - 4ms/step
-Epoch 18/51
-2846/2846 - 12s - loss: 5396.2202 - mse: 5396.2202 - val_loss: 5602.8438 - val_mse: 5602.8438 - 12s/epoch - 4ms/step
-Epoch 19/51
-2846/2846 - 12s - loss: 5398.8647 - mse: 5398.8647 - val_loss: 5612.9609 - val_mse: 5612.9609 - 12s/epoch - 4ms/step
-Epoch 20/51
-2846/2846 - 12s - loss: 5395.0742 - mse: 5395.0742 - val_loss: 5600.7803 - val_mse: 5600.7803 - 12s/epoch - 4ms/step
-Epoch 21/51
-2846/2846 - 12s - loss: 5393.2217 - mse: 5393.2217 - val_loss: 5618.6567 - val_mse: 5618.6567 - 12s/epoch - 4ms/step
-Epoch 22/51
-2846/2846 - 12s - loss: 5390.2578 - mse: 5390.2578 - val_loss: 5595.4922 - val_mse: 5595.4922 - 12s/epoch - 4ms/step
-Epoch 23/51
-2846/2846 - 12s - loss: 5388.5776 - mse: 5388.5776 - val_loss: 5601.2822 - val_mse: 5601.2822 - 12s/epoch - 4ms/step
-Epoch 24/51
-2846/2846 - 12s - loss: 5388.8354 - mse: 5388.8354 - val_loss: 5588.0996 - val_mse: 5588.0996 - 12s/epoch - 4ms/step
-Epoch 25/51
-2846/2846 - 12s - loss: 5390.3286 - mse: 5390.3286 - val_loss: 5620.3247 - val_mse: 5620.3247 - 12s/epoch - 4ms/step
-Epoch 26/51
-2846/2846 - 12s - loss: 5384.7217 - mse: 5384.7217 - val_loss: 5589.4087 - val_mse: 5589.4087 - 12s/epoch - 4ms/step
-Epoch 27/51
-2846/2846 - 12s - loss: 5385.2798 - mse: 5385.2798 - val_loss: 5636.7739 - val_mse: 5636.7739 - 12s/epoch - 4ms/step
-Epoch 28/51
-2846/2846 - 12s - loss: 5390.2852 - mse: 5390.2852 - val_loss: 5602.6836 - val_mse: 5602.6836 - 12s/epoch - 4ms/step
-Epoch 29/51
-2846/2846 - 12s - loss: 5389.2832 - mse: 5389.2832 - val_loss: 5655.7749 - val_mse: 5655.7749 - 12s/epoch - 4ms/step
-Epoch 30/51
-2846/2846 - 12s - loss: 5387.4224 - mse: 5387.4224 - val_loss: 5632.9399 - val_mse: 5632.9399 - 12s/epoch - 4ms/step
-Epoch 31/51
-2846/2846 - 12s - loss: 5388.9229 - mse: 5388.9229 - val_loss: 5583.7666 - val_mse: 5583.7666 - 12s/epoch - 4ms/step
-Epoch 32/51
-2846/2846 - 12s - loss: 5386.8096 - mse: 5386.8096 - val_loss: 5606.4473 - val_mse: 5606.4473 - 12s/epoch - 4ms/step
-Epoch 33/51
-2846/2846 - 12s - loss: 5386.7388 - mse: 5386.7388 - val_loss: 5583.3945 - val_mse: 5583.3945 - 12s/epoch - 4ms/step
-Epoch 34/51
-2846/2846 - 12s - loss: 5390.7676 - mse: 5390.7676 - val_loss: 5617.3403 - val_mse: 5617.3403 - 12s/epoch - 4ms/step
-Epoch 35/51
-2846/2846 - 12s - loss: 5392.1460 - mse: 5392.1460 - val_loss: 5599.1636 - val_mse: 5599.1636 - 12s/epoch - 4ms/step
-Epoch 36/51
-2846/2846 - 12s - loss: 5389.6323 - mse: 5389.6323 - val_loss: 5599.3438 - val_mse: 5599.3438 - 12s/epoch - 4ms/step
-Epoch 37/51
-2846/2846 - 12s - loss: 5394.8975 - mse: 5394.8975 - val_loss: 5608.2173 - val_mse: 5608.2173 - 12s/epoch - 4ms/step
-Epoch 38/51
-2846/2846 - 12s - loss: 5388.8789 - mse: 5388.8789 - val_loss: 5626.4521 - val_mse: 5626.4521 - 12s/epoch - 4ms/step
-Epoch 39/51
-2846/2846 - 12s - loss: 5384.6699 - mse: 5384.6699 - val_loss: 5594.6875 - val_mse: 5594.6875 - 12s/epoch - 4ms/step
-Epoch 40/51
-2846/2846 - 12s - loss: 5380.8936 - mse: 5380.8936 - val_loss: 5582.7021 - val_mse: 5582.7021 - 12s/epoch - 4ms/step
-Epoch 41/51
-2846/2846 - 12s - loss: 5380.5186 - mse: 5380.5186 - val_loss: 5590.0708 - val_mse: 5590.0708 - 12s/epoch - 4ms/step
-Epoch 42/51
-2846/2846 - 12s - loss: 5384.2856 - mse: 5384.2856 - val_loss: 5598.3091 - val_mse: 5598.3091 - 12s/epoch - 4ms/step
-Epoch 43/51
-2846/2846 - 12s - loss: 5383.0317 - mse: 5383.0317 - val_loss: 5597.1855 - val_mse: 5597.1855 - 12s/epoch - 4ms/step
-Epoch 44/51
-2846/2846 - 13s - loss: 5385.9648 - mse: 5385.9648 - val_loss: 5602.3154 - val_mse: 5602.3154 - 13s/epoch - 4ms/step
-Epoch 45/51
-2846/2846 - 13s - loss: 5385.4233 - mse: 5385.4233 - val_loss: 5605.6494 - val_mse: 5605.6494 - 13s/epoch - 4ms/step
-Epoch 46/51
-2846/2846 - 12s - loss: 5534.6118 - mse: 5534.6118 - val_loss: 5650.6431 - val_mse: 5650.6431 - 12s/epoch - 4ms/step
-Epoch 47/51
-2846/2846 - 12s - loss: 5378.5732 - mse: 5378.5732 - val_loss: 5593.5269 - val_mse: 5593.5269 - 12s/epoch - 4ms/step
-Epoch 48/51
-2846/2846 - 12s - loss: 5384.9268 - mse: 5384.9268 - val_loss: 5587.4800 - val_mse: 5587.4800 - 12s/epoch - 4ms/step
-Epoch 49/51
-2846/2846 - 12s - loss: 5378.9375 - mse: 5378.9375 - val_loss: 5599.9082 - val_mse: 5599.9082 - 12s/epoch - 4ms/step
-Epoch 50/51
-2846/2846 - 12s - loss: 5380.4907 - mse: 5380.4907 - val_loss: 5599.5400 - val_mse: 5599.5400 - 12s/epoch - 4ms/step
-Epoch 51/51
-2846/2846 - 12s - loss: 5380.5488 - mse: 5380.5488 - val_loss: 5586.5747 - val_mse: 5586.5747 - 12s/epoch - 4ms/step
-Saving Neural Network ID Number: 2
-------------------------------------------------------------
-
-
-Beginning Training.....
-
-The Neural Network ID Number: 3 has been Created and Compiled
-------------------------------------------------------------
-The Neural Network ID Number: 3 is Starting to Run Over the Training Data
-------------------------------------------------------------
-Epoch 1/51
-2846/2846 - 13s - loss: 5474.3662 - mse: 5474.3662 - val_loss: 5635.4048 - val_mse: 5635.4048 - 13s/epoch - 5ms/step
-Epoch 2/51
-2846/2846 - 13s - loss: 5443.7710 - mse: 5443.7710 - val_loss: 5636.5098 - val_mse: 5636.5098 - 13s/epoch - 4ms/step
-Epoch 3/51
-2846/2846 - 13s - loss: 5423.8862 - mse: 5423.8862 - val_loss: 5654.2100 - val_mse: 5654.2100 - 13s/epoch - 4ms/step
-Epoch 4/51
-2846/2846 - 13s - loss: 5426.4351 - mse: 5426.4351 - val_loss: 5610.9175 - val_mse: 5610.9175 - 13s/epoch - 5ms/step
-Epoch 5/51
-2846/2846 - 13s - loss: 5419.1426 - mse: 5419.1426 - val_loss: 5639.9253 - val_mse: 5639.9253 - 13s/epoch - 5ms/step
-Epoch 6/51
-2846/2846 - 13s - loss: 5415.9141 - mse: 5415.9141 - val_loss: 5612.2246 - val_mse: 5612.2246 - 13s/epoch - 4ms/step
-Epoch 7/51
-2846/2846 - 13s - loss: 5409.3540 - mse: 5409.3540 - val_loss: 5642.9058 - val_mse: 5642.9058 - 13s/epoch - 4ms/step
-Epoch 8/51
-2846/2846 - 13s - loss: 5417.1626 - mse: 5417.1626 - val_loss: 5603.0562 - val_mse: 5603.0562 - 13s/epoch - 4ms/step
-Epoch 9/51
-2846/2846 - 13s - loss: 5411.7178 - mse: 5411.7178 - val_loss: 5606.7222 - val_mse: 5606.7222 - 13s/epoch - 4ms/step
-Epoch 10/51
-2846/2846 - 13s - loss: 5404.9463 - mse: 5404.9463 - val_loss: 5598.3013 - val_mse: 5598.3013 - 13s/epoch - 4ms/step
-Epoch 11/51
-2846/2846 - 13s - loss: 5397.9541 - mse: 5397.9541 - val_loss: 5609.1831 - val_mse: 5609.1831 - 13s/epoch - 4ms/step
-Epoch 12/51
-2846/2846 - 13s - loss: 5402.1470 - mse: 5402.1470 - val_loss: 5594.8730 - val_mse: 5594.8730 - 13s/epoch - 4ms/step
-Epoch 13/51
-2846/2846 - 13s - loss: 5397.6411 - mse: 5397.6411 - val_loss: 5600.8823 - val_mse: 5600.8823 - 13s/epoch - 4ms/step
-Epoch 14/51
-2846/2846 - 13s - loss: 5396.7832 - mse: 5396.7832 - val_loss: 5584.1831 - val_mse: 5584.1831 - 13s/epoch - 4ms/step
-Epoch 15/51
-2846/2846 - 13s - loss: 5390.8403 - mse: 5390.8403 - val_loss: 5602.0068 - val_mse: 5602.0068 - 13s/epoch - 4ms/step
-Epoch 16/51
-2846/2846 - 13s - loss: 5392.7319 - mse: 5392.7319 - val_loss: 5623.7861 - val_mse: 5623.7861 - 13s/epoch - 4ms/step
-Epoch 17/51
-2846/2846 - 13s - loss: 5395.2725 - mse: 5395.2725 - val_loss: 5587.5059 - val_mse: 5587.5059 - 13s/epoch - 4ms/step
-Epoch 18/51
-2846/2846 - 13s - loss: 5394.7979 - mse: 5394.7979 - val_loss: 5612.9824 - val_mse: 5612.9824 - 13s/epoch - 4ms/step
-Epoch 19/51
-2846/2846 - 13s - loss: 5390.8394 - mse: 5390.8394 - val_loss: 5615.7832 - val_mse: 5615.7832 - 13s/epoch - 4ms/step
-Epoch 20/51
-2846/2846 - 13s - loss: 5392.0171 - mse: 5392.0171 - val_loss: 5591.8296 - val_mse: 5591.8296 - 13s/epoch - 4ms/step
-Epoch 21/51
-2846/2846 - 13s - loss: 5388.5615 - mse: 5388.5615 - val_loss: 5586.7939 - val_mse: 5586.7939 - 13s/epoch - 4ms/step
-Epoch 22/51
-2846/2846 - 13s - loss: 5387.2300 - mse: 5387.2300 - val_loss: 5605.9243 - val_mse: 5605.9243 - 13s/epoch - 4ms/step
-Epoch 23/51
-2846/2846 - 13s - loss: 5384.1772 - mse: 5384.1772 - val_loss: 5573.5444 - val_mse: 5573.5444 - 13s/epoch - 4ms/step
-Epoch 24/51
-2846/2846 - 13s - loss: 5387.7651 - mse: 5387.7651 - val_loss: 5599.2412 - val_mse: 5599.2412 - 13s/epoch - 4ms/step
-Epoch 25/51
-2846/2846 - 13s - loss: 5389.6323 - mse: 5389.6323 - val_loss: 5579.7041 - val_mse: 5579.7041 - 13s/epoch - 4ms/step
-Epoch 26/51
-2846/2846 - 13s - loss: 5394.4326 - mse: 5394.4326 - val_loss: 5624.0840 - val_mse: 5624.0840 - 13s/epoch - 4ms/step
-Epoch 27/51
-2846/2846 - 13s - loss: 5384.5522 - mse: 5384.5522 - val_loss: 5580.5244 - val_mse: 5580.5244 - 13s/epoch - 4ms/step
-Epoch 28/51
-2846/2846 - 13s - loss: 5387.6118 - mse: 5387.6118 - val_loss: 5589.7744 - val_mse: 5589.7744 - 13s/epoch - 4ms/step
-Epoch 29/51
-2846/2846 - 13s - loss: 5376.3442 - mse: 5376.3442 - val_loss: 5610.1006 - val_mse: 5610.1006 - 13s/epoch - 4ms/step
-Epoch 30/51
-2846/2846 - 13s - loss: 5380.7124 - mse: 5380.7124 - val_loss: 5587.0249 - val_mse: 5587.0249 - 13s/epoch - 5ms/step
-Epoch 31/51
-2846/2846 - 13s - loss: 5389.2412 - mse: 5389.2412 - val_loss: 5588.7983 - val_mse: 5588.7983 - 13s/epoch - 4ms/step
-Epoch 32/51
-2846/2846 - 13s - loss: 5384.1851 - mse: 5384.1851 - val_loss: 5606.8374 - val_mse: 5606.8374 - 13s/epoch - 4ms/step
-Epoch 33/51
-2846/2846 - 13s - loss: 5383.8262 - mse: 5383.8262 - val_loss: 5585.5972 - val_mse: 5585.5972 - 13s/epoch - 4ms/step
-Epoch 34/51
-2846/2846 - 13s - loss: 5386.4849 - mse: 5386.4849 - val_loss: 5634.4116 - val_mse: 5634.4116 - 13s/epoch - 4ms/step
-Epoch 35/51
-2846/2846 - 13s - loss: 5387.0249 - mse: 5387.0249 - val_loss: 5586.8726 - val_mse: 5586.8726 - 13s/epoch - 4ms/step
-Epoch 36/51
-2846/2846 - 13s - loss: 5384.2021 - mse: 5384.2021 - val_loss: 5602.6523 - val_mse: 5602.6523 - 13s/epoch - 4ms/step
-Epoch 37/51
-2846/2846 - 13s - loss: 5388.0181 - mse: 5388.0181 - val_loss: 5598.1812 - val_mse: 5598.1812 - 13s/epoch - 4ms/step
-Epoch 38/51
-2846/2846 - 13s - loss: 5389.6128 - mse: 5389.6128 - val_loss: 5598.0024 - val_mse: 5598.0024 - 13s/epoch - 5ms/step
-Epoch 39/51
-2846/2846 - 13s - loss: 5385.3198 - mse: 5385.3198 - val_loss: 5605.4878 - val_mse: 5605.4878 - 13s/epoch - 4ms/step
-Epoch 40/51
-2846/2846 - 13s - loss: 5388.3608 - mse: 5388.3608 - val_loss: 5666.9414 - val_mse: 5666.9414 - 13s/epoch - 4ms/step
-Epoch 41/51
-2846/2846 - 13s - loss: 5381.7173 - mse: 5381.7173 - val_loss: 5647.6724 - val_mse: 5647.6724 - 13s/epoch - 5ms/step
-Epoch 42/51
-2846/2846 - 13s - loss: 5389.6392 - mse: 5389.6392 - val_loss: 5657.0737 - val_mse: 5657.0737 - 13s/epoch - 4ms/step
-Epoch 43/51
-2846/2846 - 13s - loss: 5388.3726 - mse: 5388.3726 - val_loss: 5604.2593 - val_mse: 5604.2593 - 13s/epoch - 4ms/step
-Epoch 44/51
-2846/2846 - 13s - loss: 5385.8652 - mse: 5385.8652 - val_loss: 5603.5786 - val_mse: 5603.5786 - 13s/epoch - 5ms/step
-Epoch 45/51
-2846/2846 - 13s - loss: 5375.8701 - mse: 5375.8701 - val_loss: 5646.5923 - val_mse: 5646.5923 - 13s/epoch - 4ms/step
-Epoch 46/51
-2846/2846 - 13s - loss: 5381.1392 - mse: 5381.1392 - val_loss: 5582.0454 - val_mse: 5582.0454 - 13s/epoch - 5ms/step
-Epoch 47/51
-2846/2846 - 13s - loss: 5376.8579 - mse: 5376.8579 - val_loss: 5588.3237 - val_mse: 5588.3237 - 13s/epoch - 5ms/step
-Epoch 48/51
-2846/2846 - 13s - loss: 5379.5254 - mse: 5379.5254 - val_loss: 5585.4302 - val_mse: 5585.4302 - 13s/epoch - 5ms/step
-Epoch 49/51
-2846/2846 - 13s - loss: 5378.4165 - mse: 5378.4165 - val_loss: 5618.4365 - val_mse: 5618.4365 - 13s/epoch - 5ms/step
-Epoch 50/51
-2846/2846 - 13s - loss: 5375.7876 - mse: 5375.7876 - val_loss: 5593.9927 - val_mse: 5593.9927 - 13s/epoch - 5ms/step
-Epoch 51/51
-2846/2846 - 13s - loss: 5378.5977 - mse: 5378.5977 - val_loss: 5577.0576 - val_mse: 5577.0576 - 13s/epoch - 4ms/step
-Saving Neural Network ID Number: 3
-------------------------------------------------------------
-
-
-Beginning Training.....
-
-The Neural Network ID Number: 4 has been Created and Compiled
-------------------------------------------------------------
-The Neural Network ID Number: 4 is Starting to Run Over the Training Data
-------------------------------------------------------------
-Epoch 1/51
-2846/2846 - 13s - loss: 5472.7739 - mse: 5472.7739 - val_loss: 5644.8550 - val_mse: 5644.8550 - 13s/epoch - 5ms/step
-Epoch 2/51
-2846/2846 - 13s - loss: 5445.2710 - mse: 5445.2710 - val_loss: 5688.6128 - val_mse: 5688.6128 - 13s/epoch - 5ms/step
-Epoch 3/51
-2846/2846 - 13s - loss: 5436.0527 - mse: 5436.0527 - val_loss: 5632.8589 - val_mse: 5632.8589 - 13s/epoch - 5ms/step
-Epoch 4/51
-2846/2846 - 13s - loss: 5426.0723 - mse: 5426.0723 - val_loss: 5622.1235 - val_mse: 5622.1235 - 13s/epoch - 5ms/step
-Epoch 5/51
-2846/2846 - 13s - loss: 5420.2290 - mse: 5420.2290 - val_loss: 5619.6611 - val_mse: 5619.6611 - 13s/epoch - 5ms/step
-Epoch 6/51
-2846/2846 - 13s - loss: 5429.7026 - mse: 5429.7026 - val_loss: 5700.5923 - val_mse: 5700.5923 - 13s/epoch - 5ms/step
-Epoch 7/51
-2846/2846 - 13s - loss: 5439.5879 - mse: 5439.5879 - val_loss: 5641.5869 - val_mse: 5641.5869 - 13s/epoch - 5ms/step
-Epoch 8/51
-2846/2846 - 13s - loss: 5453.0176 - mse: 5453.0176 - val_loss: 5681.4541 - val_mse: 5681.4541 - 13s/epoch - 5ms/step
-Epoch 9/51
-2846/2846 - 13s - loss: 5433.0913 - mse: 5433.0913 - val_loss: 5636.5625 - val_mse: 5636.5625 - 13s/epoch - 5ms/step
-Epoch 10/51
-2846/2846 - 13s - loss: 5435.3149 - mse: 5435.3149 - val_loss: 5652.4873 - val_mse: 5652.4873 - 13s/epoch - 5ms/step
-Epoch 11/51
-2846/2846 - 13s - loss: 5435.3252 - mse: 5435.3252 - val_loss: 5641.7632 - val_mse: 5641.7632 - 13s/epoch - 5ms/step
-Epoch 12/51
-2846/2846 - 13s - loss: 5438.2578 - mse: 5438.2578 - val_loss: 5624.5923 - val_mse: 5624.5923 - 13s/epoch - 5ms/step
-Epoch 13/51
-2846/2846 - 13s - loss: 5448.5820 - mse: 5448.5820 - val_loss: 5626.2524 - val_mse: 5626.2524 - 13s/epoch - 5ms/step
-Epoch 14/51
-2846/2846 - 13s - loss: 5466.9043 - mse: 5466.9043 - val_loss: 5674.4404 - val_mse: 5674.4404 - 13s/epoch - 5ms/step
-Epoch 15/51
-2846/2846 - 13s - loss: 5468.8730 - mse: 5468.8730 - val_loss: 5673.9497 - val_mse: 5673.9497 - 13s/epoch - 5ms/step
-Epoch 16/51
-2846/2846 - 13s - loss: 5485.6113 - mse: 5485.6113 - val_loss: 5707.6719 - val_mse: 5707.6719 - 13s/epoch - 5ms/step
-Epoch 17/51
-2846/2846 - 13s - loss: 5493.5479 - mse: 5493.5479 - val_loss: 5701.9937 - val_mse: 5701.9937 - 13s/epoch - 5ms/step
-Epoch 18/51
-2846/2846 - 13s - loss: 5492.5396 - mse: 5492.5396 - val_loss: 5704.2944 - val_mse: 5704.2944 - 13s/epoch - 5ms/step
-Epoch 19/51
-2846/2846 - 13s - loss: 5493.0522 - mse: 5493.0522 - val_loss: 5697.9517 - val_mse: 5697.9517 - 13s/epoch - 5ms/step
-Epoch 20/51
-2846/2846 - 13s - loss: 5509.8765 - mse: 5509.8765 - val_loss: 5712.4922 - val_mse: 5712.4922 - 13s/epoch - 5ms/step
-Epoch 21/51
-2846/2846 - 13s - loss: 5504.6060 - mse: 5504.6060 - val_loss: 5693.9814 - val_mse: 5693.9814 - 13s/epoch - 5ms/step
-Epoch 22/51
-2846/2846 - 13s - loss: 5496.7178 - mse: 5496.7178 - val_loss: 5703.0166 - val_mse: 5703.0166 - 13s/epoch - 5ms/step
-Epoch 23/51
-2846/2846 - 13s - loss: 5502.1162 - mse: 5502.1162 - val_loss: 5712.2183 - val_mse: 5712.2183 - 13s/epoch - 5ms/step
-Epoch 24/51
-2846/2846 - 13s - loss: 5512.3872 - mse: 5512.3872 - val_loss: 5726.2471 - val_mse: 5726.2471 - 13s/epoch - 5ms/step
-Epoch 25/51
-2846/2846 - 13s - loss: 5516.1880 - mse: 5516.1880 - val_loss: 5729.8906 - val_mse: 5729.8906 - 13s/epoch - 5ms/step
-Epoch 26/51
-2846/2846 - 13s - loss: 5511.0269 - mse: 5511.0269 - val_loss: 5713.0430 - val_mse: 5713.0430 - 13s/epoch - 5ms/step
-Epoch 27/51
-2846/2846 - 13s - loss: 5514.2710 - mse: 5514.2710 - val_loss: 5730.9229 - val_mse: 5730.9229 - 13s/epoch - 5ms/step
-Epoch 28/51
-2846/2846 - 13s - loss: 5510.6978 - mse: 5510.6978 - val_loss: 5722.7251 - val_mse: 5722.7251 - 13s/epoch - 5ms/step
-Epoch 29/51
-2846/2846 - 13s - loss: 5518.1211 - mse: 5518.1211 - val_loss: 5732.8184 - val_mse: 5732.8184 - 13s/epoch - 5ms/step
-Epoch 30/51
-2846/2846 - 13s - loss: 5513.7847 - mse: 5513.7847 - val_loss: 5723.9575 - val_mse: 5723.9575 - 13s/epoch - 5ms/step
-Epoch 31/51
-2846/2846 - 13s - loss: 5510.5186 - mse: 5510.5186 - val_loss: 5715.2437 - val_mse: 5715.2437 - 13s/epoch - 5ms/step
-Epoch 32/51
-2846/2846 - 13s - loss: 5509.3965 - mse: 5509.3965 - val_loss: 5720.9087 - val_mse: 5720.9087 - 13s/epoch - 5ms/step
-Epoch 33/51
-2846/2846 - 13s - loss: 5510.9536 - mse: 5510.9536 - val_loss: 5723.2598 - val_mse: 5723.2598 - 13s/epoch - 5ms/step
-Epoch 34/51
-2846/2846 - 13s - loss: 5513.2217 - mse: 5513.2217 - val_loss: 5718.2637 - val_mse: 5718.2637 - 13s/epoch - 5ms/step
-Epoch 35/51
-2846/2846 - 13s - loss: 5522.0073 - mse: 5522.0073 - val_loss: 5741.4458 - val_mse: 5741.4458 - 13s/epoch - 5ms/step
-Epoch 36/51
-2846/2846 - 13s - loss: 5527.3228 - mse: 5527.3228 - val_loss: 5742.6660 - val_mse: 5742.6660 - 13s/epoch - 5ms/step
-Epoch 37/51
-2846/2846 - 13s - loss: 5525.9810 - mse: 5525.9810 - val_loss: 5745.5342 - val_mse: 5745.5342 - 13s/epoch - 5ms/step
-Epoch 38/51
-2846/2846 - 13s - loss: 5527.7188 - mse: 5527.7188 - val_loss: 5747.6152 - val_mse: 5747.6152 - 13s/epoch - 5ms/step
-Epoch 39/51
-2846/2846 - 13s - loss: 5524.0601 - mse: 5524.0601 - val_loss: 5737.1880 - val_mse: 5737.1880 - 13s/epoch - 5ms/step
-Epoch 40/51
-2846/2846 - 13s - loss: 5525.8921 - mse: 5525.8921 - val_loss: 5738.7754 - val_mse: 5738.7754 - 13s/epoch - 5ms/step
-Epoch 41/51
-2846/2846 - 13s - loss: 5522.3608 - mse: 5522.3608 - val_loss: 5735.9575 - val_mse: 5735.9575 - 13s/epoch - 5ms/step
-Epoch 42/51
-2846/2846 - 13s - loss: 5523.4102 - mse: 5523.4102 - val_loss: 5731.7363 - val_mse: 5731.7363 - 13s/epoch - 5ms/step
-Epoch 43/51
-2846/2846 - 13s - loss: 5520.6187 - mse: 5520.6187 - val_loss: 5722.0557 - val_mse: 5722.0557 - 13s/epoch - 5ms/step
-Epoch 44/51
-2846/2846 - 13s - loss: 5507.9644 - mse: 5507.9644 - val_loss: 5720.4976 - val_mse: 5720.4976 - 13s/epoch - 5ms/step
-Epoch 45/51
-2846/2846 - 13s - loss: 5509.8135 - mse: 5509.8135 - val_loss: 5733.2378 - val_mse: 5733.2378 - 13s/epoch - 5ms/step
-Epoch 46/51
-2846/2846 - 13s - loss: 5519.6069 - mse: 5519.6069 - val_loss: 5735.8213 - val_mse: 5735.8213 - 13s/epoch - 5ms/step
-Epoch 47/51
-2846/2846 - 13s - loss: 5527.4438 - mse: 5527.4438 - val_loss: 5738.2617 - val_mse: 5738.2617 - 13s/epoch - 5ms/step
-Epoch 48/51
-2846/2846 - 13s - loss: 5529.5425 - mse: 5529.5425 - val_loss: 5740.8809 - val_mse: 5740.8809 - 13s/epoch - 5ms/step
-Epoch 49/51
-2846/2846 - 13s - loss: 5527.8262 - mse: 5527.8262 - val_loss: 5739.5688 - val_mse: 5739.5688 - 13s/epoch - 5ms/step
-Epoch 50/51
-2846/2846 - 13s - loss: 5527.7998 - mse: 5527.7998 - val_loss: 5739.2681 - val_mse: 5739.2681 - 13s/epoch - 5ms/step
-Epoch 51/51
-2846/2846 - 13s - loss: 5527.3120 - mse: 5527.3120 - val_loss: 5741.3037 - val_mse: 5741.3037 - 13s/epoch - 5ms/step
-Saving Neural Network ID Number: 4
-------------------------------------------------------------
-All Neural Networks Have Been Saved, Starting Ensemble Evaluation
-------------------------------------------------------------
