@@ -7,6 +7,7 @@ import subprocess
 
 sys.path.insert(1, '../Model-Training')
 sys.path.insert(1, '../Update-Data')
+sys.path.insert(1, '../Prediction')
 
 app = Flask(__name__)
 
@@ -314,6 +315,21 @@ class Jyserverapp:
         self.js.document.getElementById(checkbox_mcclellan_summation_index).disabled = False
         self.js.document.getElementById(lead_up_day_select).disabled = False
 
+    def predict(self, trained_model_select, p_status, report_image, predict_button):
+        # Run prediction code
+        # https://stackoverflow.com/questions/43274476/is-there-a-way-to-check-if-a-subprocess-is-still-running
+        process = subprocess.Popen([sys.executable, "../Prediction/Predict.py"])
+        poll = process.poll()
+        self.js.document.getElementById(p_status).value = 'Making Prediction...'
+        self.js.document.getElementById(predict_button).disabled = True
+        self.js.document.getElementById(trained_model_select).disabled = True
+
+        process.wait()  # Wait for the report to be generated
+        self.js.document.getElementById(predict_button).disabled = False
+        self.js.document.getElementById(trained_model_select).disabled = False
+        self.js.document.getElementById(p_status).value = '...Prediction Complete'
+        self.js.document.getElementById(report_image).src = "/static/images/report.png"
+
 
 @app.route('/')
 def home():
@@ -347,7 +363,6 @@ def training():
         num_epoch_values.append(w)
 
         # Generate the range of learning rates availible for the selector
-
         learning_rate_values = [0.1, 0.01, 0.001, 0.0001]
 
     # Generate the lower limit values for types of networks to create
@@ -381,9 +396,17 @@ def training():
                                               =limit3_values))
 
 
-@app.route('/backtest')
-def verification():  # put application's code here
-    pass
+@app.route('/prediction')
+def prediction():  # put application's code here
+
+# Inspired by here Pulled from here: https://stackoverflow.com/questions/29206384/python-folder-names-in-the-directory
+
+    trained_model_folder_list = []
+    trained_model_folder_list = os.listdir("../Model-Training/Trained-Models")
+    print("Model Folders: ", trained_model_folder_list)
+    return Jyserverapp.render(render_template("prediction.html",
+                                              trained_models
+                                              =trained_model_folder_list))
 
 
 if __name__ == '__main__':

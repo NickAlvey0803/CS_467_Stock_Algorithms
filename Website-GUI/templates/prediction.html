@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algorithmic Trading</title>
+</head>
+<h3>
+	<a href="/">Home</a>
+    ||
+	<a href="/training">Training Your Classification Network</a>
+	||
+	<a href="/prediction">Predict Most Profitable 3xETF</a>
+</h3>
+<body onload="server.status_update('t_status')">
+<table>
+    <tr>
+        <th><h2 style="text-decoration: underline;">
+            Predict the Most Profitable 3x-ETF to Algorithmically Trade</h2></th>
+    </tr>
+    <tr>
+        <td>
+            <span>
+                Which model would you like to use to make predictions?
+            </span>
+            <br>
+            <br>
+            <select style="width:200px"  name="trained_models_select"
+                    id="trained_models_select">
+              {% for trained_model in trained_models[1:] %}
+                <option value="{{trained_model}}">
+                    {{trained_model}}
+                </option>
+              {% endfor %}
+            </select>
+        </td>
+        <td>
+            <button id="predict_button" onclick="server.predict('trained_models_select', 'p_status', 'report_image',
+                                                                'predict_button')">
+                Make Prediction</button>
+            <br>
+            <textarea readonly id="p_status" style="width:190px;height:20px;
+                line-height:1em; color:dimgrey;padding:1px;resize:none;">
+            </textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img id='report_image' style="width:500px;height:500px;">
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+<br>
+</body>
+</html>
+<script>
+    function enableTrainButton(){
+    let trained_model_select = document.getElementById('trained_models_select').value;
+    let _button = document.getElementById('train_button');
+    if (m_name_input.value != ''&&
+        document.getElementById('input_interlock').value === 'True') {
+        t_button.disabled = false;
+    }
+    else {
+        t_button.disabled = true;
+    }
+</script>

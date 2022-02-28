@@ -1,0 +1,142 @@
+Updating Put-Call-Ratio's...
+...No more data to add
+
+Updating 3xETF's...
+...Updating TQQQ
+...Updating SOXL
+...Updating FAS
+...Updating UPRO
+...Updating SPXL
+...Updating TECL
+...Updating SQQQ
+...Updating TNA
+...Updating FNGU
+...Updating LABU
+...Updating UDOW
+...Updating SPXU
+...Updating YINN
+...Updating DPST
+...Updating TZA
+...Updating SPXS
+...Updating TMF
+...Updating TMV
+...Updating URTY
+...Updating SDOW
+...Updating DFEN
+...Updating NAIL
+...Updating CURE
+...Updating TTT
+...Updating SRTY
+...Updating SOXS
+...Updating EDC
+...Updating DRN
+...Updating FAZ
+...Updating RETL
+...Updating FNGD
+...Updating TECS
+...Updating MIDU
+...Updating TPOR
+...Updating YANG
+...Updating LABD
+...Updating UMDD
+...Updating SBND
+...Updating EURL
+...Updating DUSL
+...Updating KORU
+...Updating TYO
+...Updating EDZ
+...Updating DRV
+...Updating PILL
+...Updating TYD
+...Updating UTSL
+...Updating OILU
+...Updating MEXX
+...Updating SMDD
+...Updating OILD
+
+Updating Junk Bonds...
+...Updating FTSL
+...Updating HYG
+...Updating JNK
+...Updating SRLN
+...Updating USHY
+
+Updating mcClellan...
+...Updating SPX 
+...Updating DOW
+
+~~Update Complete~~
+
+------End of Update------
+
+~No dataset found~
+
+
+Building Dataset...
+...Dataset creation 1.96% complete
+...Dataset creation 3.92% complete
+...Dataset creation 5.88% complete
+...Dataset creation 7.84% complete
+...Dataset creation 9.80% complete
+...Dataset creation 11.76% complete
+...Dataset creation 13.73% complete
+...Dataset creation 15.69% complete
+...Dataset creation 17.65% complete
+...Dataset creation 19.61% complete
+...Dataset creation 21.57% complete
+...Dataset creation 23.53% complete
+...Dataset creation 25.49% complete
+...Dataset creation 27.45% complete
+...Dataset creation 29.41% complete
+...Dataset creation 31.37% complete
+...Dataset creation 33.33% complete
+...Dataset creation 35.29% complete
+...Dataset creation 37.25% complete
+...Dataset creation 39.22% complete
+...Dataset creation 41.18% complete
+...Dataset creation 43.14% complete
+...Dataset creation 45.10% complete
+...Dataset creation 47.06% complete
+...Dataset creation 49.02% complete
+...Dataset creation 50.98% complete
+...Dataset creation 52.94% complete
+...Dataset creation 54.90% complete
+...Dataset creation 56.86% complete
+...Dataset creation 58.82% complete
+...Dataset creation 60.78% complete
+...Dataset creation 62.75% complete
+...Dataset creation 64.71% complete
+...Dataset creation 66.67% complete
+...Dataset creation 68.63% complete
+...Dataset creation 70.59% complete
+...Dataset creation 72.55% complete
+...Dataset creation 74.51% complete
+...Dataset creation 76.47% complete
+...Dataset creation 78.43% complete
+...Dataset creation 80.39% complete
+...Dataset creation 82.35% complete
+...Dataset creation 84.31% complete
+...Dataset creation 86.27% complete
+...Dataset creation 88.24% complete
+...Dataset creation 90.20% complete
+...Dataset creation 92.16% complete
+...Dataset creation 94.12% complete
+...Dataset creation 96.08% complete
+...Dataset creation 98.04% complete
+...Dataset creation 100.00% complete
+Saving dataset...
+Data Set Preparing for Neural Network Testing
+------------------------------------------------------------
+The Data has been prepared, the Neural Network is being Created
+------------------------------------------------------------
+
+
+Beginning Training.....
+
+The Neural Network ID Number: 0 has been Created and Compiled
+------------------------------------------------------------
+The Neural Network ID Number: 0 is Starting to Run Over the Training Data
+------------------------------------------------------------
+Epoch 1/51
+2846/2846 - 29s - loss: 5464.0615 - mse: 5464.0615 - val_loss: 5656.8940 - val_mse: 5656.8940 - 29s/epoch - 10ms/step
+Epoch 2/51

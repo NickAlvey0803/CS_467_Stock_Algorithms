@@ -39,6 +39,7 @@ print("------------------------------------------------------------")
 print("Run with Tensorflow Version: " + tf.__version__)
 print("------------------------------------------------------------")
 
+
 #####################################################################################################################
 
 # Get CSV for Volatility and Momentum Calculations
@@ -46,8 +47,8 @@ print("------------------------------------------------------------")
 
 #####################################################################################################################
 
-def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
-                  junkbondflag = 0, mcclellanflag = 0, future_num_days = 10):
+def CreateDataset(lead_up_days=2, consideration_days=90, putcallflag=0,
+                  junkbondflag=0, mcclellanflag=0, future_num_days=10):
     # Number of days in sample to consider leading up to current day, lowest it should be is 2
     ETFpath = '../Data/3x-ETF/'
     N = lead_up_days
@@ -85,8 +86,9 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
         print_and_write_status("\n\nBuilding Dataset...")
         for ETF_csvs in ETFfiles:
             counter += 1
-            print_and_write_status("...Dataset creation " + "{:.2f}".format(float((counter/number_of_ETFfiles)*100)) +
-                                   "% complete")
+            print_and_write_status(
+                "...Dataset creation " + "{:.2f}".format(float((counter / number_of_ETFfiles) * 100)) +
+                "% complete")
 
             # Added to reference the name of the CSV file later in script
             path = ETF_csvs[:25]
@@ -95,15 +97,15 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             # print("Path is: ", ETF_csvs[:25])
             # print("Name is: ", ETF_csvs[15:])
 
-            #print('NAME IS AT TOP: ', name)
+            # print('NAME IS AT TOP: ', name)
             # ETFfile = 'TQQQ.csv'
             ETF_3x = pd.read_csv(ETF_csvs)
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Price - Derived Calculations
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Calculating Historic Volatility from Raw 3x ETF Data
 
@@ -132,7 +134,8 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
                         ETF_3x['High'][day - i] / ETF_3x['Open'][day - i]) + np.log(
                         ETF_3x['Low'][day - i] / ETF_3x['Close'][day - i]) * np.log(
                         ETF_3x['Low'][day - i] / ETF_3x['Open'][day - i])
-                    temp_overnight_vol += (np.log(ETF_3x['Open'][day - i] / ETF_3x['Close'][day - np.absolute((i - 1))])) ** 2
+                    temp_overnight_vol += (np.log(
+                        ETF_3x['Open'][day - i] / ETF_3x['Close'][day - np.absolute((i - 1))])) ** 2
                     temp_openclose_vol += (np.log(ETF_3x['Close'][day - i] / ETF_3x['Open'][day - i])) ** 2
                 rog_satch_vol = temp_rog_satch_vol * F / N
                 overnight_vol = temp_overnight_vol * F / (N - 1)
@@ -147,7 +150,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             # print(name + " Volatility Calculated and Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Calculating Momentum from Raw 3x ETF Data
 
@@ -182,11 +185,11 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             # print(name + " " + str(consideration_days) + "-day Momentum Calculated and Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Sentimental Factors
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Compiling Put/Call Ratios
             if putcallflag == 0:
@@ -199,7 +202,8 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
 
                 for days in range(len(ETF_3x)):
                     etf_datetime = datetime.datetime.strptime(ETF_3x['Date'][days], "%Y-%m-%d")
-                    putcall_index = PutCall_rawdata[PutCall_rawdata['date'] == etf_datetime.strftime('%Y-%m-%d')].index.values
+                    putcall_index = PutCall_rawdata[
+                        PutCall_rawdata['date'] == etf_datetime.strftime('%Y-%m-%d')].index.values
                     if len(PutCall_rawdata.iloc[putcall_index, PutCall_rawdata.columns.get_loc('p_c_ratio')]) == 0:
                         ETF_3x.iloc[days, ETF_3x.columns.get_loc('Put/Call Ratio')] = np.nan
                     else:
@@ -211,7 +215,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             else:
                 pass
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Calculating Junk Bond Demand (Volume)
 
@@ -271,14 +275,15 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
                         JunkBond_interpreted_data['Date'] == etf_datetime.strftime('%Y-%m-%d')].index.values
 
                     ETF_3x.iloc[days, ETF_3x.columns.get_loc('Junk Bond Demand')] = \
-                        JunkBond_interpreted_data.iloc[junkbond_index, JunkBond_interpreted_data.columns.get_loc('Volume')]
+                        JunkBond_interpreted_data.iloc[
+                            junkbond_index, JunkBond_interpreted_data.columns.get_loc('Volume')]
 
                 # print(name + " Junk Bond Demand Calculated and Appended to Dataframe")
                 # print("------------------------------------------------------------")
             else:
                 pass
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Calculating McClellan Summation Index on stock in question
 
@@ -340,16 +345,16 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             else:
                 pass
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Add in Profit for Traded Data via QuantConnect Backtesting of Provided Algorithm
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             Quantpath = '../Data/3X-ETF-Backtests-CSharp/'
 
             Quantfile = name
-            #print("Name is: ",name)
+            # print("Name is: ",name)
             Quant_rawdata = None
 
             # Note, for now, columns are off by one, so "Date" here equates to the column of "Value"
@@ -398,16 +403,16 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
                     # do temp_percent for percentage change, start for total amount in inventory
                     ETF_3x.iloc[days, ETF_3x.columns.get_loc('Profit Percentage')] = temp_percent
 
-                #print(name + " Profit Percentage by Trading Algorithm Compiled and Appended to Dataframe")
-                #print("------------------------------------------------------------")
+                # print(name + " Profit Percentage by Trading Algorithm Compiled and Appended to Dataframe")
+                # print("------------------------------------------------------------")
             else:
                 ETF_3x['Profit Percentage'] = np.nan
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Calculate Future Difference in Closing Price
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # future_num_days = 15  # starting value, can be changed to any number
             #
@@ -423,13 +428,13 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             # # print(name + " " + str(future_num_days) + "-day Delta in Close Price Compiled and Appended to Dataframe")
             # # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Add Time Lag Variables
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # num_days = 30  # starting value, can be changed to any number
             #
@@ -447,7 +452,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                       "Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # num_days = 30  # starting value, can be changed to any number
             #
@@ -465,7 +470,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                       "Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # num_days = 30  # starting value, can be changed to any number
             #
@@ -483,7 +488,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                      " Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # num_days = 30  # starting value, can be changed to any number
             #
@@ -501,7 +506,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                        "and Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # num_days = 30  # starting value, can be changed to any number
             #
@@ -519,7 +524,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                   "Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             num_days = 10  # starting value, can be changed to any number
 
@@ -534,10 +539,10 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
                             ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Volatility')]
 
             # print(name + " " + str(num_days) + "-day Volatility Lag with " + str(delta_between) + "-day Spacing Compiled and "
-                                                                                                 # "Appended to Dataframe")
+            # "Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # for n in range(num_days // delta_between):  # must be whole number
             #     ETF_3x['Momentum Time Lag ' + str(n)] = np.nan
@@ -551,7 +556,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                     "Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # for n in range(num_days // delta_between):  # must be whole number
             #     ETF_3x['Put/Call Time Lag ' + str(n)] = np.nan
@@ -565,7 +570,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #                                                                                     "Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # for n in range(num_days // delta_between):  # must be whole number
             #     ETF_3x['Junk Bond Demand Time Lag ' + str(n)] = np.nan
@@ -579,7 +584,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #       "-day Spacing Compiled and Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # for n in range(num_days // delta_between):  # must be whole number
             #     ETF_3x['McClellan Summation Index Time Lag ' + str(n)] = np.nan
@@ -593,7 +598,7 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #       "-day Spacing Compiled and Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # for n in range(num_days // delta_between):  # must be whole number
             #     ETF_3x['Profit Percentage Time Lag ' + str(n)] = np.nan
@@ -607,11 +612,11 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #       "-day Spacing Compiled and Appended to Dataframe")
             # print("------------------------------------------------------------")
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Some Last Cleanup of the Dataframe
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # If desired, Turn Date into Separate Column for Year, Month, and Date
 
@@ -625,25 +630,25 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
             #     ETF_3x.iloc[days, ETF_3x.columns.get_loc('Month')] = etf_datetime.strftime('%m')
             #     ETF_3x.iloc[days, ETF_3x.columns.get_loc('Day')] = etf_datetime.strftime('%d')
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Drop Data that isn't valuable, for now that's just the "Data" Column because it's not convertible to a float
             # If it is desired, uncomment the section above
 
             ETF_3x = ETF_3x.drop(columns=['Date'])
 
-        #####################################################################################################################
+            #####################################################################################################################
 
             # Removes all Nan values
             ETF_3x = ETF_3x.dropna()
             ETF_3x = ETF_3x.reset_index(drop=True)
 
             # if skip_flag == 1:
-                # print("This ETF is being removed from the Dataset")
-                # print("------------------------------------------------------------")
-            #else:
-                # print("The ETF Dataset for " + name + " has been Finalized and is Being Added to the Overall Data Set")
-                # print("------------------------------------------------------------")
+            # print("This ETF is being removed from the Dataset")
+            # print("------------------------------------------------------------")
+            # else:
+            # print("The ETF Dataset for " + name + " has been Finalized and is Being Added to the Overall Data Set")
+            # print("------------------------------------------------------------")
 
             if first_run_flag == 0:
                 Whole_ETF_3x = ETF_3x
@@ -653,17 +658,18 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
 
         #####################################################################################################################
 
-            # Some Troubleshooting Prints - Printing out the shape of the Dataframe, as well as outputting it to a CSV
-            # To view potential errors
+        # Some Troubleshooting Prints - Printing out the shape of the Dataframe, as well as outputting it to a CSV
+        # To view potential errors
         #
-            # print("------------------------------------------------------------")
-            # print("SHAPE IS: ")
-            # print(Whole_ETF_3x.shape)
-            # print("------------------------------------------------------------")
+        # print("------------------------------------------------------------")
+        # print("SHAPE IS: ")
+        # print(Whole_ETF_3x.shape)
+        # print("------------------------------------------------------------")
         print_and_write_status("Saving dataset...")
         Whole_ETF_3x.to_csv('../Data/Built-Datasets/' + str(tfd['Model_Name']))
 
     return Whole_ETF_3x
+
 
 # future_num_days = 15  # starting value, can be changed to any number
 
@@ -673,9 +679,8 @@ def CreateDataset(lead_up_days = 2, consideration_days = 90, putcallflag = 0,
 
 #####################################################################################################################
 
-def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
-                        lim3 = 60, base_epochs = 1, base_learning_rate = 0.1):
-
+def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
+                        lim3=60, base_epochs=1, base_learning_rate=0.1):
     """
 
     :param Whole_ETF_3x: Pandas Dataframe of the dataset
@@ -788,7 +793,6 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
                 layers.Dense(1)
             ])
 
-
         # Help from https://keras.io/api/optimizers/learning_rate_schedules/exponential_decay/
         # Learning rate will decline as the number of epochs increases
 
@@ -816,7 +820,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
             train_features,
             train_labels,
             validation_split=0.20,
-            verbose=2, epochs=base_epochs + 10 * models_to_test,)
+            verbose=2, epochs=base_epochs + 10 * models_to_test, )
 
         print("Saving Neural Network ID Number: " + str(model_num))
         print("------------------------------------------------------------")
@@ -907,7 +911,6 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
     plt.legend()
 
     # Display the Plot
-
     plt.show()
 
     #####################################################################################################################
@@ -919,12 +922,15 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test = 5, lim1 = 15, lim2 = 35,
     #####################################################################################################################
     return '../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/'
     sys.stdout.close()
+
+
 if __name__ == "__main__":
     # Send all out put to status file
     def print_and_write_status(string):
         sys.stdout = open("../Website-GUI/status.txt", 'a')
         print(string)
         sys.stdout.close()
+
 
     # Put the training config into a dictionary
     with open("../Model-Training/training_config.txt", "r") as training_config_file:
@@ -936,13 +942,10 @@ if __name__ == "__main__":
         for i in range(len(line)):
             if line[i] == ":":
                 key = line[:i]
-                value = line[(i+2):-1]
+                value = line[(i + 2):-1]
                 tfd[key] = value
-
 
     ETF_created = CreateDataset(int(tfd["Lead_Up_Days"]), int(tfd["Momentum_Consideration"]), int(tfd["Putt_Call"]),
                                 int(tfd["Junk_Bond"]), int(tfd["McClellan_Summation"]))
 
     location_of_models = CreateNeuralNetwork(ETF_created)
-
-
