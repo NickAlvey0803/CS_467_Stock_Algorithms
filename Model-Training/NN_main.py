@@ -407,210 +407,69 @@ def CreateDataset(lead_up_days=2, consideration_days=90, putcallflag=0,
                 # print("------------------------------------------------------------")
             else:
                 ETF_3x['Profit Percentage'] = np.nan
+                #####################################################################################################################
+
+                # Add in Volatility Time Lag Variables
+
+                #####################################################################################################################
+
+                num_days = 10  # starting value, can be changed to any number
+
+                delta_between = 1  # starting value, can be changed to any number
+
+                for n in range(num_days // delta_between):  # must be whole number
+                    ETF_3x['Volatility Time Lag ' + str(n)] = np.nan
+
+                    for days in range(len(ETF_3x)):
+                        if days >= n * delta_between:
+                            ETF_3x.iloc[days, ETF_3x.columns.get_loc('Volatility Time Lag ' + str(n))] = \
+                                ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Volatility')]
+
+                print(
+                    name + " " + str(num_days) + "-day Volatility Lag with " + str(
+                        delta_between) + "-day Spacing Compiled and "
+                                         "Appended to Dataframe")
+                print("------------------------------------------------------------")
+
+                #####################################################################################################################
+
+                # Copy ETF for last 30 days for prediction purposes
+
+                #####################################################################################################################
+
+                prediction_ETF = ETF_3x.dropna()
+                prediction_ETF = prediction_ETF.tail(30)
+                prediction_ETF = prediction_ETF.drop(columns=['Date'])
+                prediction_ETF.to_csv('prediction_' + name_to_return)
+
+                #####################################################################################################################
+
+                # Calculate Future Profit Prediction
+
+                #####################################################################################################################
+
+                # future_num_days = 30  # starting value, can be changed to any number
+
+                ETF_3x['Profit Prediction' + str(future_num_days) + ' days from now'] = np.nan
+
+                for days in range(len(ETF_3x) - (future_num_days + 1)):
+                    ETF_3x.iloc[
+                        days, ETF_3x.columns.get_loc('Profit Prediction' + str(future_num_days) + ' days from now')] = 0
+                    for n in range(future_num_days):
+                        ETF_3x.iloc[days, ETF_3x.columns.get_loc(
+                            'Profit Prediction' + str(future_num_days) + ' days from now')] += \
+                            ETF_3x.iloc[days + n + 1, ETF_3x.columns.get_loc('Profit Percentage')]
+
+                    ETF_3x.iloc[
+                        days, ETF_3x.columns.get_loc('Profit Prediction' + str(future_num_days) + ' days from now')] \
+                        = (ETF_3x.iloc[days, ETF_3x.columns.get_loc('Profit Prediction' + str(future_num_days)
+                                                                    + ' days from now')] / future_num_days)
+
+                print(name + " " + str(
+                    future_num_days) + "-day Delta in Profit Made from the Trading Algorithm Compiled and Appended to Dataframe")
+                print("------------------------------------------------------------")
 
             #####################################################################################################################
-
-            # Calculate Future Difference in Closing Price
-
-            #####################################################################################################################
-
-            # future_num_days = 15  # starting value, can be changed to any number
-            #
-            #
-            # ETF_3x['Closing Price Difference ' + str(future_num_days) + ' days from now'] = np.nan
-            #
-            # for days in range(len(ETF_3x) - (future_num_days + 1)):
-            #     ETF_3x.iloc[days, ETF_3x.columns.get_loc('Closing Price Difference ' + str(future_num_days) + ' days from now')] = 0
-            #     for n in range(future_num_days):
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Closing Price Difference ' + str(future_num_days) + ' days from now')] += \
-            #                 ETF_3x.iloc[days + n + 1, ETF_3x.columns.get_loc('Close')]
-            #
-            # # print(name + " " + str(future_num_days) + "-day Delta in Close Price Compiled and Appended to Dataframe")
-            # # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            #####################################################################################################################
-
-            # Add Time Lag Variables
-
-            #####################################################################################################################
-
-            # num_days = 30  # starting value, can be changed to any number
-            #
-            # delta_between = 1  # starting value, can be changed to any number
-            #
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['High Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('High Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('High')]
-            #
-            # print(name + " " + str(num_days) + "-day High Price Lag with " + str(delta_between) + "-day Spacing Compiled and "
-            #                                                                                       "Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # num_days = 30  # starting value, can be changed to any number
-            #
-            # delta_between = 1  # starting value, can be changed to any number
-            #
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Low Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Low Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Low')]
-            #
-            # print(name + " " + str(num_days) + "-day Low Price Lag with " + str(delta_between) + "-day Spacing Compiled and "
-            #                                                                                       "Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # num_days = 30  # starting value, can be changed to any number
-            #
-            # delta_between = 1  # starting value, can be changed to any number
-            #
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Open Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Open Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Open')]
-            #
-            # print(name + " " + str(num_days) + "-day Open Price Lag with " + str(delta_between) + "-day Spacing Compiled and"
-            #                                                                                      " Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # num_days = 30  # starting value, can be changed to any number
-            #
-            # delta_between = 1  # starting value, can be changed to any number
-            #
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Close Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Close Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Volatility')]
-            #
-            # print(name + " " + str(num_days) + "-day Close Price Lag with " + str(delta_between) + "-day Spacing Compiled "
-            #                                                                                        "and Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # num_days = 30  # starting value, can be changed to any number
-            #
-            # delta_between = 1  # starting value, can be changed to any number
-            #
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Volume Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Volume Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Volume')]
-            #
-            # print(name + " " + str(num_days) + "-day Volume Lag with " + str(delta_between) + "-day Spacing Compiled and "
-            #                                                                                   "Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            num_days = 10  # starting value, can be changed to any number
-
-            delta_between = 1  # starting value, can be changed to any number
-
-            for n in range(num_days // delta_between):  # must be whole number
-                ETF_3x['Volatility Time Lag ' + str(n)] = np.nan
-
-                for days in range(len(ETF_3x)):
-                    if days >= n * delta_between:
-                        ETF_3x.iloc[days, ETF_3x.columns.get_loc('Volatility Time Lag ' + str(n))] = \
-                            ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Volatility')]
-
-            # print(name + " " + str(num_days) + "-day Volatility Lag with " + str(delta_between) + "-day Spacing Compiled and "
-            # "Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Momentum Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Momentum Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Momentum')]
-            #
-            # print(name + " " + str(num_days) + "-day Momentum Lag with " + str(delta_between) + "-day Spacing Compiled and "
-            #                                                                                     "Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Put/Call Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Put/Call Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Put/Call Ratio')]
-            #
-            # print(name + " " + str(num_days) + "-day Put/Call Lag with " + str(delta_between) + "-day Spacing Compiled and "
-            #                                                                                     "Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Junk Bond Demand Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Junk Bond Demand Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Junk Bond Demand')]
-            #
-            # print(name + " " + str(num_days) + "-day Junk Bond Demand Lag with " + str(delta_between) +
-            #       "-day Spacing Compiled and Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['McClellan Summation Index Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('McClellan Summation Index Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('McClellan Summation Index')]
-            #
-            # print(name + " " + str(num_days) + "-day McClellan Summation Index Lag with " + str(delta_between) +
-            #       "-day Spacing Compiled and Appended to Dataframe")
-            # print("------------------------------------------------------------")
-
-            #####################################################################################################################
-
-            # for n in range(num_days // delta_between):  # must be whole number
-            #     ETF_3x['Profit Percentage Time Lag ' + str(n)] = np.nan
-            #
-            #     for days in range(len(ETF_3x)):
-            #         if days >= n * delta_between:
-            #             ETF_3x.iloc[days, ETF_3x.columns.get_loc('Profit Percentage Time Lag ' + str(n))] = \
-            #                 ETF_3x.iloc[days - n * delta_between, ETF_3x.columns.get_loc('Profit Percentage')]
-            #
-            # print(name + " " + str(num_days) + "-day Profit Percentage Lag with " + str(delta_between) +
-            #       "-day Spacing Compiled and Appended to Dataframe")
-            # print("------------------------------------------------------------")
 
             #####################################################################################################################
 
@@ -668,7 +527,7 @@ def CreateDataset(lead_up_days=2, consideration_days=90, putcallflag=0,
         print_and_write_status("Saving dataset...")
         Whole_ETF_3x.to_csv('../Data/Built-Datasets/' + str(tfd['Model_Name']))
 
-    return Whole_ETF_3x
+    return Whole_ETF_3x, future_num_days, name_to_return, prediction_ETF
 
 
 # future_num_days = 15  # starting value, can be changed to any number
@@ -679,8 +538,8 @@ def CreateDataset(lead_up_days=2, consideration_days=90, putcallflag=0,
 
 #####################################################################################################################
 
-def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
-                        lim3=60, base_epochs=1, base_learning_rate=0.1):
+def CreateNeuralNetwork(Whole_ETF_3x, prediction_ETF, future_num_days, name_to_return, models_to_test = 30, lim1 = 10, lim2 = 18,
+                        lim3 = 24, base_epochs = 500, base_learning_rate = 0.001):
     """
 
     :param Whole_ETF_3x: Pandas Dataframe of the dataset
@@ -705,12 +564,14 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
 
     train_features = Train_X.copy()
     test_features = Test_X.copy()
+    prediction_features = prediction_ETF.copy()
 
-    train_labels = train_features.pop('Profit Percentage')
-    test_labels = test_features.pop('Profit Percentage')
+    train_labels = train_features.pop('Profit Prediction' + str(future_num_days) + ' days from now')
+    test_labels = test_features.pop('Profit Prediction' + str(future_num_days) + ' days from now')
 
     train_features = np.asarray(train_features).astype(float)
     test_features = np.asarray(test_features).astype(float)
+    prediction_features = np.asarray(prediction_features).astype(float)
 
     train_labels = np.asarray(train_labels).astype(float)
     test_labels = np.asarray(test_labels).astype(float)
@@ -820,14 +681,14 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
             train_features,
             train_labels,
             validation_split=0.20,
-            verbose=2, epochs=base_epochs + 10 * models_to_test, )
+            verbose=2, epochs=base_epochs + 10 * models_to_test)
 
         print("Saving Neural Network ID Number: " + str(model_num))
         print("------------------------------------------------------------")
 
         # Save Neural Network in Folder for 1) Later Reference, or 2) Manipulation from GUI
 
-        test_model.save('../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/' + str(model_num))
+        test_model.save('../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/' + + name_to_return + ' ' + str(model_num))
 
     #####################################################################################################################
 
@@ -842,10 +703,11 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
 
     models = []
     for i in range(models_to_test):
-        modelTemp = load_model('../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/' + str(i))
+        modelTemp = load_model('../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/' + name_to_return + ' ' + str(i))
         models.append(modelTemp)
 
     mean_ens_guess = []
+    mean_predict_guess = []
 
     # Other options for choosing how to combine ensembled models
 
@@ -862,6 +724,18 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
 
         # print(raw_guess)
         mean_ens_guess.append(np.mean(raw_guess))
+
+    for point in prediction_features:
+        # print(point)
+        raw_guess = []
+        for model in models:
+            # print(point)
+            # print(len(point))
+            # print(model)
+            raw_guess.append(model.predict(point))
+
+        # print(raw_guess)
+        mean_predict_guess.append(np.mean(raw_guess))
 
         # Other options for choosing how to combine ensembled models
 
@@ -881,6 +755,11 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
     print("------------------------------------------------------------")
     guess = test_model.predict(test_features)
 
+    train_loss = history.history['loss']
+    val_loss = history.history['val_loss']
+
+    plt.clf()
+
     print("Plotting Results")
     print("------------------------------------------------------------")
 
@@ -894,24 +773,25 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
     plt.legend()
     plt.grid(True)
 
-    # Single (Latest) Neural Network Results
-
-    plt.subplot(1, 3, 2)
-    x = tf.linspace(0.0, len(test_labels) - 1, len(test_labels))
-    plt.plot(x, test_labels, label='How Much Actually Traded')
-    plt.plot(x, guess, label='Single Network Guess at Price')
-    plt.legend()
 
     # Ensembled Neural Network Results
 
-    plt.subplot(1, 3, 3)
+    plt.subplot(1, 3, 2)
     x = tf.linspace(0.0, len(test_labels) - 1, len(test_labels))
     plt.plot(x, test_labels, label='How Much Actually Traded')
     plt.plot(x, mean_ens_guess, label='Ensembled Network Guess at Price')
     plt.legend()
 
-    # Display the Plot
-    plt.show()
+    # Ensembled Predictive Guess
+
+    plt.subplot(1, 3, 3)
+    x = tf.linspace(0.0, 30 - 1, 30)
+    plt.plot(x, mean_predict_guess, label='Ensembled Network Guess at Future 30 day performance')
+    plt.legend()
+
+    # Save the Plot
+    plt.savefig('Training Plots/' + name_to_return + '_training_result.png')
+    # plt.show()
 
     #####################################################################################################################
 
@@ -920,7 +800,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, models_to_test=5, lim1=15, lim2=35,
     test_results = {'test_model': test_model.evaluate(test_features, test_labels, verbose=0)}
     print("Training Complete", end="")
     #####################################################################################################################
-    return '../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/'
+    return '../Model-Training/Trained-Models/' + str(tfd['Model_Name']) + '/', models_to_test, future_num_days, name_to_return, mean_predict_guess, train_loss, val_loss
     sys.stdout.close()
 
 
