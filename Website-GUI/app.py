@@ -215,8 +215,9 @@ class Jyserverapp:
             else:
                 self.checkbox_mcclellan_summation_index = '0'
 
-        # Set path to the training config file
+        # Set path to the training config and status file
         training_config_filepath = "../Model-Training/training_config.txt"
+        training_status_filepath = "./status.txt"
 
         # Label each choice
         model_name = "Model_Name: " + self.m_name_input
@@ -239,8 +240,9 @@ class Jyserverapp:
                           limit3, momentum, putt_call,
                           junk_bond, mcclellan_summation]
 
-        # Erase the file
+        # Erase the files
         open(training_config_filepath, 'w').close()
+        open(training_status_filepath, 'w').close()
 
         # Write the list of variables to
         f = open(training_config_filepath, 'a')
@@ -359,7 +361,7 @@ def training():
         momentum_consideration_day_values.append(i)
 
     # Generate the values that will populate the drop down selector for number of epochs
-    for w in range(1, 51):
+    for w in range(1, 2500):
         num_epoch_values.append(w)
 
         # Generate the range of learning rates availible for the selector
@@ -402,7 +404,7 @@ def prediction():  # put application's code here
 # Inspired by here Pulled from here: https://stackoverflow.com/questions/29206384/python-folder-names-in-the-directory
 
     trained_model_folder_list = []
-    trained_model_folder_list = os.listdir("../Model-Training/Trained-Models")
+    trained_model_folder_list = os.listdir("./static/images/")
     print("Model Folders: ", trained_model_folder_list)
     return Jyserverapp.render(render_template("prediction.html",
                                               trained_models

@@ -1,8 +1,8 @@
-Model_Name: Model 3
-Models_to_Test: 1
-Number_of_Epochs: 1
+Model_Name: 3m-10e
+Models_to_Test: 3
+Number_of_Epochs: 10
 Base_Learning_Rate: 0.1
-Lead_Up_Days: 2
+Lead_Up_Days: 16
 Limit1: 15
 Limit2: 30
 Limit3: 50

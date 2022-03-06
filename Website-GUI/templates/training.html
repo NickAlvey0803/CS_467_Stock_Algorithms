@@ -50,7 +50,7 @@
             <input type="checkbox" id="checkbox_putt_call"
                 name="checkbox_putt_call" value="False"
                 onclick="setInputInterlock(this)">
-            <span>- Putt/Call Ratios</span>
+            <span>- Put/Call Ratios</span>
             <br>
             <input type="checkbox" id="checkbox_junk_bond_demand"
                 name="checkbox_junk_bond_demand" value="False"
@@ -69,7 +69,7 @@
         <td>
         <br>
             <span>
-                How many models would you like to use?
+                How many Neural Networks would you like to use?
             </span>
             <br>
             <br>
@@ -87,7 +87,7 @@
             <br>
             <br>
             <span>
-                How many Epochs would like you like to train your models?
+                How many Epochs would like you like to train your Neural Networks?
             </span>
             <br>
             <br>
@@ -201,7 +201,7 @@
             <br>
             <select style="width:50px"  name="lead_up_day_select"
                     id="lead_up_day_select">
-              <option value="{{lead_up_day_values[0]}}" selected>
+              <option value="{{lead_up_day_values[14]}}" selected>
                                 {{lead_up_day_values[14]}}
               </option>
               {% for lead_up_day_value in lead_up_day_values[1:] %}

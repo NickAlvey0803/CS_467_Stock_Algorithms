@@ -6,9 +6,7 @@
 #####################################################################################################################
 
 # For Data Parsing
-
-# For Data Parsing
-
+import sys
 import pandas as pd
 import glob
 import os
@@ -84,7 +82,7 @@ if __name__ == "__main__":
 
 # Here is how I called the functions:
 
-# ETF_created,num_days_to_predict,model_save_loc, prediction_ETF = CreateDataset()
+#     ETF_created,num_days_to_predict,model_save_loc, prediction_ETF = CreateDataset()
 #     ETF_created2, num_days_to_predict2, model_save_loc2, prediction_ETF2 = CreateDataset('3x-ETF/SQQQ')
 #     ETF_created3, num_days_to_predict3, model_save_loc3, prediction_ETF3 = CreateDataset('3x-ETF/CURE')
 #     ETF_created4, num_days_to_predict4, model_save_loc4, prediction_ETF4 = CreateDataset('3x-ETF/SDOW')
