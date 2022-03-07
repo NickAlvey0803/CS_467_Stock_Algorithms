@@ -1,5 +1,5 @@
-# Initial Network Testing
 # Written by Nick Alvey
+# Modified by Patrick Parks
 
 #####################################################################################################################
 # Import Necessary Components
@@ -7,7 +7,6 @@
 
 # For Data Parsing
 import docx
-from docx2pdf import convert
 import pandas as pd
 import glob
 import os
@@ -16,9 +15,8 @@ from scipy.stats import linregress
 import datetime
 import matplotlib.pyplot as plt
 import sys
-# import docx
-# from docx2pdf import convert
-from keras.callbacks import Callback
+import shutil
+
 # For Neural Networks
 
 import tensorflow as tf
@@ -651,8 +649,7 @@ def CreateNeuralNetwork(Whole_ETF_3x, prediction_ETF, name_to_return, future_num
         print("The Neural Network ID Number: " + str(model_num) + " has been Created and Compiled")
         print("------------------------------------------------------------")
 
-        print(
-            "The Neural Network ID Number: " + str(model_num) + " is Starting to Run Over the Training Data")
+        print("The Neural Network ID Number: " + str(model_num) + " is Starting to Run Over the Training Data")
         print("------------------------------------------------------------")
 
         history = test_model.fit(
@@ -770,11 +767,10 @@ def CreateNeuralNetwork(Whole_ETF_3x, prediction_ETF, name_to_return, future_num
     plt.legend()
 
     # Save the Plot
-    out_dir = "../Website-GUI/static/Training_Plots/" + str(tfd['Model_Name'])
+    out_dir = "../Website-GUI/static/predictions/" + str(tfd['Model_Name']) + '/' + "Training_Plots"
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
-    plt.savefig('../Website-GUI/static/Training_Plots/' + str(
-        tfd['Model_Name']) + '/' + name_to_return + '_training_result.png')
+    plt.savefig(out_dir + '/' + name_to_return + '_training_result.png')
     # plt.show()
 
     ####################################################################################################################
@@ -791,6 +787,7 @@ def EvaluateModels(list_of_lists, model_name_lists, train_loss_list, val_loss_li
     plt.clf()
     flag = 0
     result_dict = {}
+    # https: // www.geeksforgeeks.org / change - plot - size - in -matplotlib - python /
     for result in range(len(list_of_lists)):
 
         x = tf.linspace(0.0, 30 - 1, 30)
@@ -808,17 +805,20 @@ def EvaluateModels(list_of_lists, model_name_lists, train_loss_list, val_loss_li
                 max_name = model_name_lists[result]
             else:
                 pass
-    plt.legend()
-    plt.title("Predicted Performance Comparison")
+    plt.legend(prop={'size': 5})
+
+    plt.title("Predicted Performance Comparison - Model: " + str(tfd['Model_Name']))
     plt.xlabel('Days from Now')
     plt.ylabel('Percentage Predicted to be Profited')
-    plt.savefig('./static/images/' + model_name + '.png')
+    if not os.path.exists('./static/predictions/' + model_name):
+        os.makedirs('./static/predictions/' + model_name)
+    plt.savefig('./static/predictions/' + model_name + '/' + model_name + '.png', dpi=600)
     # plt.show()
 
     results_doc = docx.Document()
     results_doc.add_heading('Algorithm Projected Performance', 1)
     results_doc.add_heading('Results Plot', 3)
-    results_doc.add_picture('./static/images/' + model_name + '.png')
+    results_doc.add_picture('./static/predictions/' + model_name + '/' + model_name + '.png')
 
     print_and_write_status(
         "The Best Overall Performing ETF Was: " + str(max_name) + ", with an averaged profit of: " + str(
@@ -826,28 +826,49 @@ def EvaluateModels(list_of_lists, model_name_lists, train_loss_list, val_loss_li
 
     results_doc.add_paragraph(
         "The Best Overall Performing ETF Was: " + str(max_name) + ", with an average growth of: " + str(max))
+    # https://datagy.io/python-sort-a-dictionary-by-values/
+    #result_dict = dict(sorted(result_dict.items(), key=lambda x: x[1], reverse=True))
 
-    print_and_write_status("Here are the results of the ETF's: ")
     for item in result_dict:
-        print_and_write_status("ETF: " + item + " profited " + str(
-            result_dict[item][0]) + "%. The Neural Network generated a Training Loss of ~" + str(
-            int(result_dict[item][1])) + ", and a Validation Loss of ~" + str(int(result_dict[item][2])))
-        results_doc.add_paragraph("ETF: " + item + " grew " + str(
-            result_dict[item][0]) + "%. During testing, the Neural Network generated a Training Loss of ~" + str(
-            int(result_dict[item][1])) + ", and a Validation Loss of ~" + str(int(result_dict[item][2])))
+        file = open('./static/predictions/' + model_name + '/' + model_name + '.txt', "a")
+        file.write("ETF: " + str(item) + " Profit of: " + str(result_dict[item][0])
+                   + "%. Training Loss of: "
+                   + str(result_dict[item][1])
+                   + ", Validation Loss of: " + str(result_dict[item][2]) + '\n')
+        file.close()
 
-    out_dir2 = "./static/reports/" + str(tfd['Model_Name'])
+        # print_and_write_status("ETF: " + item + " profited " + str(
+        #   result_dict[item][0]) + "%. The NΩΩΩeural Network generated a Training Loss of ~" + str(
+        #  int(result_dict[item][1])) + ", and a Validation Loss of ~" + str(int(result_dict[item][2])))
+
+        results_doc.add_paragraph("ETF: " + item + " profited " + str(
+           result_dict[item][0]) + "%. The Neural Network generated a Training Loss of ~" + str(
+          int(result_dict[item][1])) + ", and a Validation Loss of ~" + str(int(result_dict[item][2])))
+
+    out_dir2 = "./static/predictions/" + str(tfd['Model_Name'])
     if not os.path.exists(out_dir2):
         os.makedirs(out_dir2)
-    results_doc.save('./static/reports' + str(tfd['Model_Name']) + '/' + 'Comparison_Results.docx')
-    convert("./staticComparison_Results.docx", str(tfd['Model_Name']) + '.pdf')
+    results_doc.save('./static/predictions/' + str(tfd['Model_Name']) + '/' + str(tfd['Model_Name']) + '.docx')
+    # convert('./static/reports/' + str(tfd['Model_Name']) + '/' + str(tfd['Model_Name']) + '.docx')
 
+    # Zip up contents of session for this model
+    shutil.make_archive(str(tfd['Model_Name']), 'zip', './static/predictions/' + str(tfd['Model_Name']))
+    shutil.move('./' + str(tfd['Model_Name']) + '.zip', './static/predictions/'
+                + str(tfd['Model_Name']) + '/'
+                + str(tfd['Model_Name']) + '.zip')
 
 if __name__ == "__main__":
+
     # Send all output to status file
     def print_and_write_status(string):
         sys.stdout = open("../Website-GUI/status.txt", 'a')
         print(string)
+        sys.stdout.close()
+
+
+    def training_complete():
+        sys.stdout = open("../Website-GUI/status.txt", 'a')
+        print("Training Complete", end='')
         sys.stdout.close()
 
 
@@ -864,22 +885,6 @@ if __name__ == "__main__":
                 value = line[(i + 2):-1]
                 tfd[key] = value
 
-    # Here is how I called the functions:
-    '''
-    ETF_created, num_days_to_predict, model_save_loc, prediction_ETF = CreateDataset()
-    ETF_created2, num_days_to_predict2, model_save_loc2, prediction_ETF2 = CreateDataset('3x-ETF/SQQQ')
-    ETF_created3, num_days_to_predict3, model_save_loc3, prediction_ETF3 = CreateDataset('3x-ETF/CURE')
-    ETF_created4, num_days_to_predict4, model_save_loc4, prediction_ETF4 = CreateDataset('3x-ETF/SDOW')
-    ETF_created5, num_days_to_predict5, model_save_loc5, prediction_ETF5 = CreateDataset('3x-ETF/SPXU')
-    models_tested, num_days_predicted, name, results, train_loss, val_loss = CreateNeuralNetwork(ETF_created, prediction_ETF, num_days_to_predict,model_save_loc)
-    models_tested2, num_days_predicted2, name2, results2, train_loss2, val_loss2 = CreateNeuralNetwork(ETF_created2, prediction_ETF2, num_days_to_predict2, model_save_loc2)
-    models_tested3, num_days_predicted3, name3, results3, train_loss3, val_loss3 = CreateNeuralNetwork(ETF_created3, prediction_ETF2,
-                                                                                   num_days_to_predict3, model_save_loc3)
-    models_tested4, num_days_predicted4, name4, results4, train_loss4, val_loss4 = CreateNeuralNetwork(ETF_created4, prediction_ETF4,
-                                                                                  num_days_to_predict4, model_save_loc4)
-    models_tested5, num_days_predicted5, name5, results5, train_loss5, val_loss5 = CreateNeuralNetwork(ETF_created5, prediction_ETF,
-                                                                                 num_days_to_predict5, model_save_loc5)
-'''
     csvFiles = glob.glob(os.path.join("../Data/3x-ETF/", "*.csv"))
     listed = []
     listed_name = []
@@ -919,30 +924,10 @@ if __name__ == "__main__":
         listed_train_loss.append(train_loss)
         listed_val_loss.append(val_loss)
 
-    '''
-    listed.append(results2)
-    listed_name.append(name2)
-    listed_train_loss.append(train_loss2)
-    listed_val_loss.append(val_loss2)
-    listed.append(results3)
-    listed_train_loss.append(train_loss3)
-    listed_val_loss.append(val_loss3)
-    listed.append(results4)
-    listed_name.append(name4)
-    listed_train_loss.append(train_loss4)
-    listed_val_loss.append(val_loss4)
-    listed.append(results5)
-    listed_name.append(name5)
-    listed_train_loss.append(train_loss5)
-    listed_val_loss.append(val_loss5)
-    '''
     print_and_write_status("Evaluating Results...(This may take a while)")
     EvaluateModels(listed, listed_name, listed_train_loss, listed_val_loss, str(tfd["Model_Name"]))
-    print_and_write_status("Cleaning Up...")
 
-    # https://stackoverflow.com/questions/185936/how-to-delete-the-contents-of-a-folder
-    files = glob.glob('../Data/Built-Datasets/*')
-    for f in files:
-        os.remove(f)
 
-    print_and_write_status("Training Complete", end="")
+    # Send signal to reset status
+    training_complete()
+    exit()

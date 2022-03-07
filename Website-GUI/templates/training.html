@@ -31,7 +31,7 @@
         <td>
         </td>
         <td>
-            <p>Create Model Name</p>
+            <p>Please Create a Unique Model Name</p>
             <input type="text" id="m_name_input"
                    onkeyup="enableTrainButton()"
                    style="width:230px;height:20px;line-height:1em;
@@ -111,8 +111,8 @@
             <br>
             <select style="width:50px"  name="learning_rate_select"
                     id="learning_rate_select">
-              <option value="{{learning_rate_values[0]}}" selected>
-                                {{learning_rate_values[0]}}
+              <option value="{{learning_rate_values[1]}}" selected>
+                                {{learning_rate_values[1]}}
               </option>
               {% for learning_rate_value in learning_rate_values[1:] %}
                 <option value="{{learning_rate_value}}">
@@ -123,7 +123,7 @@
             <br>
             <br>
             <span>
-                What do you want your lower limit for your network ensamble to be?
+                What do you want your lower limit for your network ensemble to be?
             </span>
             <br>
             <br>
@@ -141,7 +141,7 @@
             <br>
             <br>
             <span>
-                What do you want your middle limit for your network ensamble to be?
+                What do you want your middle limit for your network ensemble to be?
             </span>
             <br>
             <br>
@@ -159,7 +159,7 @@
             <br>
             <br>
             <span>
-                What do you want your high limit for your network ensamble to be?
+                What do you want your high limit for your network ensemble to be?
             </span>
             <br>
             <br>
@@ -237,7 +237,7 @@
         <td>
         </td>
         <td>
-            <button id="c_button" onclick="server.cancel('t_status')"
+            <button id="c_button" onclick="server.cancel_training('t_status')"
                     disabled>Cancel Training</button>
             <input type="checkbox" id="cancel_interlock"
                    name="cancel_interlock" value="cancel_ok"

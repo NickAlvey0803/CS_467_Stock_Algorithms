@@ -4,6 +4,7 @@ import sys
 import os
 import time
 import subprocess
+import glob
 
 sys.path.insert(1, '../Model-Training')
 sys.path.insert(1, '../Update-Data')
@@ -12,12 +13,20 @@ sys.path.insert(1, '../Prediction')
 app = Flask(__name__)
 
 
-def start_training():
-    # Clear out the file
-    open("status.txt", "w").close()
+def start_stop_training(flag, process=None):
+    if flag == 1:
+        # Clear out the file
+        open("./status.txt", "w").close()
 
-    # Update ETF/PUTCALL/CBOE data
-    subprocess.Popen([sys.executable, "../Update-Data/YFinanceScraper.py"])
+        # Update ETF/PUTCALL/CBOE data
+        return subprocess.Popen([sys.executable, "../Update-Data/YFinanceScraper.py"])
+
+    if flag == 0:
+        with open('./status.txt', 'a') as f:
+            f.write("Training Canceled")
+        process.terminate()  # Kill the process
+
+
 
 
 @jsf.use(app)  # This is a module named jyserver that allows manipulation of DOM
@@ -41,7 +50,7 @@ class Jyserverapp:
         self.on_training_page_reload = ""
         self.training_loop = True
         self.training_status = False
-
+        self.process = ''
     # -------- The methods below are for the Training page ---------
     # Updates text boxes with status and re-enables user input when 'Done' seen
     def training_status_box_update(self, t_status,
@@ -66,7 +75,7 @@ class Jyserverapp:
         # user input, if not clear the status box
         if self.training_status:
             # Start Update, Data Creation
-            start_training()
+            self.process = start_stop_training(1)
 
             f = open(status_filepath, "r")
             lines = f.readlines()
@@ -125,7 +134,7 @@ class Jyserverapp:
         # specific status text box on the webpage
 
         while self.training_loop:
-            time.sleep(.0001)
+            time.sleep(.00001)
             f = open(status_filepath, "r")
             lines = f.readlines()
             f.close()
@@ -137,9 +146,15 @@ class Jyserverapp:
                         self.training_box_status += lines[i]
                         self.training_status_len += 1
                     # Stop looping if Done is sent and reset everything
-                    if lines[i] == 'Training Complete':
+                    if lines[i] == 'Training Complete' or lines[i] == 'Training Canceled':
                         self.training_box_status += '\n.......End..........'
                         print("MATCH FOUND ________________")
+
+                        # https://stackoverflow.com/questions/185936/how-to-delete-the-contents-of-a-folder
+                        files = glob.glob('../Data/Built-Datasets/*')
+                        for f in files:
+                            os.remove(f)
+
                         # This deactivates the training complete line by
                         # adding a new line, and also adds a
                         # separator to the training status file to separate
@@ -317,21 +332,62 @@ class Jyserverapp:
         self.js.document.getElementById(checkbox_mcclellan_summation_index).disabled = False
         self.js.document.getElementById(lead_up_day_select).disabled = False
 
-    def predict(self, trained_model_select, p_status, report_image, predict_button):
+    def cancel_training(self, t_status):
+        #print("IM HERE IN CANCEL TRAINING")
+        start_stop_training(0, self.process) #kill the process running training
+
+    def predict(self, report_select, p_status, report_image, predict_button, prediction_text, download_link, download_button):
+        # get the value the user selected
+        model_name = str(self.js.document.getElementById(report_select).value)
+
         # Run prediction code
         # https://stackoverflow.com/questions/43274476/is-there-a-way-to-check-if-a-subprocess-is-still-running
-        process = subprocess.Popen([sys.executable, "../Prediction/Predict.py"])
-        poll = process.poll()
-        self.js.document.getElementById(p_status).value = 'Making Prediction...'
+        self.js.document.getElementById(p_status).value = 'Loading Prediction...'
         self.js.document.getElementById(predict_button).disabled = True
-        self.js.document.getElementById(trained_model_select).disabled = True
-
-        process.wait()  # Wait for the report to be generated
+        self.js.document.getElementById(report_select).disabled = True
+        self.js.document.getElementById(download_button).disabled = False
         self.js.document.getElementById(predict_button).disabled = False
-        self.js.document.getElementById(trained_model_select).disabled = False
-        self.js.document.getElementById(p_status).value = '...Prediction Complete'
-        self.js.document.getElementById(report_image).src = "/static/images/report.png"
+        self.js.document.getElementById(report_select).disabled = False
+        self.js.document.getElementById(p_status).value = '...Load Complete'
+        self.js.document.getElementById(report_image).src = "./static/predictions/" + \
+                                                            model_name +\
+                                                            '/' + model_name\
+                                                            + '.png'
 
+        prediction_text_filepath = "./static/predictions/" + \
+                                                            model_name +\
+                                                            '/' + model_name\
+                                                            + '.txt'
+        prediction_text_lines = ""
+        f = open(prediction_text_filepath, "r")
+        lines = f.readlines()
+        f.close()
+        # print("Prediction text filepath: ", prediction_text_filepath)
+        for i in range(len(lines)):
+            prediction_text_lines += lines[i]
+        # print("Prediction text Lines: ", prediction_text_lines)
+
+        # Re-Update the specified status through DOM manipulation
+        self.js.document.getElementById(prediction_text).value \
+            = prediction_text_lines
+
+
+        # Update the drop down box when the predict button is pressed incase training has recently finished
+        reports_list = os.listdir("./static/predictions/")
+        self.js.document.getElementById(report_select).value = reports_list
+
+        #Enable the download button and change the link to the proper zip file
+        self.js.document.getElementById(download_link).setAttribute("href", "./static/predictions/"
+                                                                    + model_name
+                                                                    + "/"
+                                                                    + model_name
+                                                                    + '.zip')
+        self.js.document.getElementById(download_link).setAttribute("download", model_name
+                                                                    + '.zip')
+
+    def prediction_update(self, report_select):
+        reports_list = os.listdir("./static/predictions/")
+        self.js.document.getElementById(report_select).value = reports_list
 
 @app.route('/')
 def home():
@@ -349,11 +405,11 @@ def training():
     limit2_values = []
     limit3_values = []
 
-    for j in range(1, 46):
+    for j in range(3, 46):
         # Generate list of number of models to test
         models_to_test_values.append(j)
 
-    for i in range(2, 91):
+    for i in range(3, 60):
         # Generate list of lag time values
         lead_up_day_values.append(i)
 
@@ -361,10 +417,10 @@ def training():
         momentum_consideration_day_values.append(i)
 
     # Generate the values that will populate the drop down selector for number of epochs
-    for w in range(1, 2500):
+    for w in range(5, 5000):
         num_epoch_values.append(w)
 
-        # Generate the range of learning rates availible for the selector
+        # Generate the range of learning rates available for the selector
         learning_rate_values = [0.1, 0.01, 0.001, 0.0001]
 
     # Generate the lower limit values for types of networks to create
@@ -401,15 +457,19 @@ def training():
 @app.route('/prediction')
 def prediction():  # put application's code here
 
-# Inspired by here Pulled from here: https://stackoverflow.com/questions/29206384/python-folder-names-in-the-directory
-
-    trained_model_folder_list = []
-    trained_model_folder_list = os.listdir("./static/images/")
-    print("Model Folders: ", trained_model_folder_list)
+    # Inspired by here Pulled from here: https://stackoverflow.com/questions/29206384/python-folder-names-in-the-directory
+    reports_list = os.listdir("./static/predictions")
     return Jyserverapp.render(render_template("prediction.html",
-                                              trained_models
-                                              =trained_model_folder_list))
+                                              reports=reports_list))
 
 
 if __name__ == '__main__':
+    # Clear up old models that are not being used
+    try:
+        trained_model_files = glob.glob('../Model-Training/Trained-Models/*')
+        for j in trained_model_files:
+            os.remove(j)
+    except:
+        print("Could not delete old trained models")
     app.run()
+

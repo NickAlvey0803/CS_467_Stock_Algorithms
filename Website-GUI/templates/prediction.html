@@ -11,7 +11,7 @@
 	||
 	<a href="/prediction">Predict Most Profitable 3xETF</a>
 </h3>
-<body onload="server.status_update('t_status')">
+<body onload="server.prediction_update('report_select')">
 <table>
     <tr>
         <th><h2 style="text-decoration: underline;">
@@ -20,23 +20,31 @@
     <tr>
         <td>
             <span>
-                Which model would you like to use to make predictions?
+                Which models predictions would you like to load?
             </span>
             <br>
             <br>
-            <select style="width:200px"  name="trained_models_select"
-                    id="trained_models_select">
-              {% for trained_model in trained_models[1:] %}
-                <option value="{{trained_model}}">
-                    {{trained_model}}
+            <select style="width:200px"  name="report_select" id="report_select" >
+              {% for report in reports[1:] %}
+                <option value="{{report}}">
+                    {{report}}
                 </option>
               {% endfor %}
             </select>
+            <button id="refresh_report_select" onclick="server.prediction_update('report_select')">
+                Refresh List
+            </button>
+            <a id="download_link" href="#" download="#">
+            <button id="download_button" disabled>
+                Download Report
+            </button>
+            </a>
         </td>
         <td>
-            <button id="predict_button" onclick="server.predict('trained_models_select', 'p_status', 'report_image',
-                                                                'predict_button')">
-                Make Prediction</button>
+            <button id="predict_button" onclick="server.predict('report_select', 'p_status', 'report_image',
+                                                                'predict_button', 'prediction_text', 'download_link',
+                                                                 'download_button')">
+                Load Prediction</button>
             <br>
             <textarea readonly id="p_status" style="width:190px;height:20px;
                 line-height:1em; color:dimgrey;padding:1px;resize:none;">
@@ -45,9 +53,13 @@
     </tr>
     <tr>
         <td>
-            <img id='report_image' style="width:500px;height:500px;">
+            <img id='report_image' style="width:780px;height:650px;">
         </td>
         <td>
+            <textarea readonly id="prediction_text" style="white-space: pre;overflow-wrap: normal;
+                overflow-x: scroll;width:500px;height:500px;line-height:1em;
+                color:dimgrey;padding:1px;resize:true;">
+            </textarea>
         </td>
     </tr>
     <tr>
