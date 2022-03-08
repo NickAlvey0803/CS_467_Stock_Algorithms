@@ -805,7 +805,7 @@ def EvaluateModels(list_of_lists, model_name_lists, train_loss_list, val_loss_li
                 max_name = model_name_lists[result]
             else:
                 pass
-    plt.legend(prop={'size': 5})
+    plt.legend(prop={'size': 4})
 
     plt.title("Predicted Performance Comparison - Model: " + str(tfd['Model_Name']))
     plt.xlabel('Days from Now')
