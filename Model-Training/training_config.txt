@@ -1,4 +1,4 @@
-Model_Name: 3N-5E
+Model_Name: Model 2
 Models_to_Test: 3
 Number_of_Epochs: 5
 Base_Learning_Rate: 0.01

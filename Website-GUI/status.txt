@@ -1,0 +1,141 @@
+Updating Put-Call-Ratio's...
+...No more data to add
+
+Updating 3xETF's...
+...Updating TQQQ
+...Updating SOXL
+...Updating FAS
+...Updating UPRO
+...Updating SPXL
+...Updating TECL
+...Updating SQQQ
+...Updating TNA
+...Updating FNGU
+...Updating LABU
+...Updating UDOW
+...Updating SPXU
+...Updating YINN
+...Updating DPST
+...Updating TZA
+...Updating SPXS
+...Updating TMF
+...Updating TMV
+...Updating URTY
+...Updating SDOW
+...Updating DFEN
+...Updating NAIL
+...Updating CURE
+...Updating TTT
+...Updating SRTY
+...Updating SOXS
+...Updating EDC
+...Updating DRN
+...Updating FAZ
+...Updating RETL
+...Updating FNGD
+...Updating TECS
+...Updating MIDU
+...Updating TPOR
+...Updating YANG
+...Updating LABD
+...Updating UMDD
+...Updating SBND
+...Updating EURL
+...Updating DUSL
+...Updating KORU
+...Updating TYO
+...Updating EDZ
+...Updating DRV
+...Updating PILL
+...Updating TYD
+...Updating UTSL
+...Updating OILU
+...Updating MEXX
+...Updating SMDD
+...Updating OILD
+
+Updating Junk Bonds...
+...Updating FTSL
+...Updating HYG
+...Updating JNK
+...Updating SRLN
+...Updating USHY
+
+Updating mcClellan...
+...Updating SPX 
+...Updating DOW
+
+~~Update Complete~~
+
+------End of Update------
+1/51
+
+
+Building Dataset for: SPXU
+Saving dataset...
+Data Set Preparing for Neural Network Testing
+------------------------------------------------------------
+The Data has been prepared, the Neural Network is being Created
+------------------------------------------------------------
+
+
+Training: SPXU
+
+The Neural Network ID Number: 0 has been Created and Compiled
+------------------------------------------------------------
+The Neural Network ID Number: 0 is Starting to Run Over the Training Data
+------------------------------------------------------------
+Epoch 1/5
+71/71 - 1s - loss: 502.0761 - mse: 502.0761 - val_loss: 478.3437 - val_mse: 478.3437 - 714ms/epoch - 10ms/step
+Epoch 2/5
+71/71 - 0s - loss: 484.2289 - mse: 484.2289 - val_loss: 471.2830 - val_mse: 471.2830 - 351ms/epoch - 5ms/step
+Epoch 3/5
+71/71 - 0s - loss: 477.4865 - mse: 477.4865 - val_loss: 467.7596 - val_mse: 467.7596 - 358ms/epoch - 5ms/step
+Epoch 4/5
+71/71 - 0s - loss: 471.9280 - mse: 471.9280 - val_loss: 465.2019 - val_mse: 465.2019 - 362ms/epoch - 5ms/step
+Epoch 5/5
+71/71 - 0s - loss: 467.1419 - mse: 467.1419 - val_loss: 464.5207 - val_mse: 464.5207 - 358ms/epoch - 5ms/step
+Saving Neural Network ID Number: 0
+------------------------------------------------------------
+
+
+Training: SPXU
+
+The Neural Network ID Number: 1 has been Created and Compiled
+------------------------------------------------------------
+The Neural Network ID Number: 1 is Starting to Run Over the Training Data
+------------------------------------------------------------
+Epoch 1/5
+71/71 - 1s - loss: 506.0575 - mse: 506.0575 - val_loss: 478.8938 - val_mse: 478.8938 - 702ms/epoch - 10ms/step
+Epoch 2/5
+71/71 - 0s - loss: 477.3289 - mse: 477.3289 - val_loss: 466.3298 - val_mse: 466.3298 - 348ms/epoch - 5ms/step
+Epoch 3/5
+71/71 - 0s - loss: 465.1910 - mse: 465.1910 - val_loss: 465.4582 - val_mse: 465.4582 - 353ms/epoch - 5ms/step
+Epoch 4/5
+71/71 - 0s - loss: 465.6562 - mse: 465.6562 - val_loss: 457.1365 - val_mse: 457.1365 - 355ms/epoch - 5ms/step
+Epoch 5/5
+71/71 - 0s - loss: 462.0249 - mse: 462.0249 - val_loss: 455.0395 - val_mse: 455.0395 - 363ms/epoch - 5ms/step
+Saving Neural Network ID Number: 1
+------------------------------------------------------------
+
+
+Training: SPXU
+
+The Neural Network ID Number: 2 has been Created and Compiled
+------------------------------------------------------------
+The Neural Network ID Number: 2 is Starting to Run Over the Training Data
+------------------------------------------------------------
+Epoch 1/5
+71/71 - 1s - loss: 505.2695 - mse: 505.2695 - val_loss: 475.9111 - val_mse: 475.9111 - 667ms/epoch - 9ms/step
+Epoch 2/5
+71/71 - 0s - loss: 470.8845 - mse: 470.8845 - val_loss: 458.5978 - val_mse: 458.5978 - 347ms/epoch - 5ms/step
+Epoch 3/5
+71/71 - 0s - loss: 461.6594 - mse: 461.6594 - val_loss: 447.6233 - val_mse: 447.6233 - 342ms/epoch - 5ms/step
+Epoch 4/5
+71/71 - 0s - loss: 453.6549 - mse: 453.6549 - val_loss: 452.2969 - val_mse: 452.2969 - 344ms/epoch - 5ms/step
+Epoch 5/5
+71/71 - 0s - loss: 443.2425 - mse: 443.2425 - val_loss: 441.1673 - val_mse: 441.1673 - 345ms/epoch - 5ms/step
+Saving Neural Network ID Number: 2
+------------------------------------------------------------
+All Neural Networks Have Been Saved, Starting Ensemble Evaluation
+------------------------------------------------------------
