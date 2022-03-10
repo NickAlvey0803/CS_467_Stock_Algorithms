@@ -1,0 +1,1 @@
+This file is present to prevent the folder from being deleted

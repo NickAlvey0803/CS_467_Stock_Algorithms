@@ -1,4 +1,4 @@
-Model_Name: Model 2
+Model_Name: Demo
 Models_to_Test: 3
 Number_of_Epochs: 5
 Base_Learning_Rate: 0.01
