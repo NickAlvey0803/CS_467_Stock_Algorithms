@@ -417,7 +417,7 @@ def training():
         momentum_consideration_day_values.append(i)
 
     # Generate the values that will populate the drop down selector for number of epochs
-    for w in range(5, 20000):
+    for w in range(5, 20001):
         num_epoch_values.append(w)
 
         # Generate the range of learning rates available for the selector
