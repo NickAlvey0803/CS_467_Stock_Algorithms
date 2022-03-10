@@ -25,7 +25,7 @@
             <br>
             <br>
             <select style="width:200px"  name="report_select" id="report_select" >
-              {% for report in reports[1:] %}
+              {% for report in reports[0:] %}
                 <option value="{{report}}">
                     {{report}}
                 </option>
@@ -72,15 +72,3 @@
 <br>
 </body>
 </html>
-<script>
-    function enableTrainButton(){
-    let trained_model_select = document.getElementById('trained_models_select').value;
-    let _button = document.getElementById('train_button');
-    if (m_name_input.value != ''&&
-        document.getElementById('input_interlock').value === 'True') {
-        t_button.disabled = false;
-    }
-    else {
-        t_button.disabled = true;
-    }
-</script>
